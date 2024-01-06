@@ -1,0 +1,16 @@
+<form class="headerSearchForm">
+    <mat-form-field class="searchField" style="width: 100%;">
+        <mat-label>Search</mat-label>
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto"
+            (keydown.enter)="onSearchSubmit($event)">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onOptionSelected($event)">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                <span class="acOption">
+                    <img *ngIf="option.imageUrl" [src]="option.imageUrl">
+                    <img *ngIf="!option.imageUrl" src="../../assets/images/NW Stacked.png">
+                    {{option.name}}
+                </span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

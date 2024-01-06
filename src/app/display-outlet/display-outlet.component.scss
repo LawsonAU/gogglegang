@@ -1,0 +1,16 @@
+::ng-deep {
+    &::-webkit-scrollbar {
+        width: 0.3125rem;
+        height: 0.3125rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #a9a9a9;
+        cursor: pointer;
+        border-radius: 0.15625rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #e1e1e1;
+    }
+}

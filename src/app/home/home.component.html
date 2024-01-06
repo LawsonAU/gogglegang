@@ -1,0 +1,99 @@
+<div class="pageWidth">
+    <div class="pageHeaderCont" [@fade]>
+        <span class="pageSubHeader">
+            Meet the
+        </span>
+
+        <span class="pageHeader">
+            Goggle Gang
+        </span>
+
+        <span class="pageBody">
+            The shadowy cabal, "Goggle Gang" weaves clandestine plots, fueled by ancient feuds, orchestrating chaos from digital shadows.
+        </span>
+    </div>
+
+    <div class="filterMain">
+        <div class="searchCont">
+            <mat-icon class="searchButton" (click)="showSearchBar()">
+                search
+            </mat-icon>
+
+            <div class="searchBarCont" [@showHideSearch]="showHideSearch ? 'expanded' : 'collapsed'">
+                <input #searchBarInput class="searchBar" type="text" matInput placeholder="Search" (input)="filterMembers(searchBarInput.value)" />
+                <mat-icon mat-icon-button matSuffix *ngIf="searchBarInput.value.length > 1">clear</mat-icon>
+              </div>
+        </div>
+
+        <!--<mat-chip-listbox aria-label="Weapon selection">
+            <mat-chip-option [selected]="weapon.selected" *ngFor="let weapon of uniqueWeapons" [value]="weapon" (click)="updateFilter(weapon)">
+                {{ weapon.weapon }}
+            </mat-chip-option>
+        </mat-chip-listbox>-->
+
+        <mat-form-field>
+            <mat-label>Kill Steal Level</mat-label>
+
+            <label *ngIf="selectedKillStealLevel" for="icon" class="select-label">
+                <span class="levelRow">
+                    <span [ngClass]="selectedKillStealLevel >= 1 ? 'levelFull' : 'levelOpaque'"></span>
+                    <span [ngClass]="selectedKillStealLevel >= 2 ? 'levelFull' : 'levelOpaque'"></span>
+                    <span [ngClass]="selectedKillStealLevel >= 3 ? 'levelFull' : 'levelOpaque'"></span>
+                </span>
+            </label>
+
+            <mat-select [(ngModel)]="selectedKillStealLevel" (ngModelChange)="onKillStealLevelChange($event)">
+                <mat-option [value]="null" selected>None</mat-option>
+                <mat-option [value]="1">
+                    <span class="levelRow">
+                    <span class="levelFull"></span>
+                    <span class="levelOpaque"></span>
+                    <span class="levelOpaque"></span>
+                    </span>
+                </mat-option>
+                <mat-option [value]="2">
+                    <span class="levelRow">
+                    <span class="levelFull"></span>
+                    <span class="levelFull"></span>
+                    <span class="levelOpaque"></span>
+                    </span>
+                </mat-option>
+                <mat-option [value]="3">
+                    <span class="levelRow">
+                    <span class="levelFull"></span>
+                    <span class="levelFull"></span>
+                    <span class="levelFull"></span>
+                    </span>
+                </mat-option>
+            </mat-select>
+
+            <button mat-icon-button matSuffix *ngIf="selectedKillStealLevel" (click)="clearSelection()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </div>
+
+    <div class="weaponFilter">
+        <mat-tab-group animationDuration="0ms" (selectedIndexChange)="tabChanged($event)">
+            <mat-tab label="All"></mat-tab>
+            <mat-tab *ngFor="let weapon of uniqueWeapons" [label]="weapon.weapon"></mat-tab>
+        </mat-tab-group>
+    </div>
+
+    <div class="playerCardRow">
+        <div class="flexRow" [@fadeStagger]>
+            <ng-container *ngFor="let member of filteredMembers">
+                <div class="playerCard" [routerLink]="['/detail', member.name.toLowerCase()]">
+                    <div class="playerImageCont">
+                        <img class="playerImage" [src]="member.image">
+                    </div>
+
+                    <div class="playerDetail">
+                        <span class="playerName">{{member.name}}</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

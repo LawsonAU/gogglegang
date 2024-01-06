@@ -1,0 +1,49 @@
+@use "@material/image-list";
+
+.masonry-item img {
+    height: 225px;
+}
+
+.masonry-item {
+    transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
+}
+
+.gallery-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* or any other value based on your design */
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 10px); /* Adjust the width as per your design */
+    margin: 5px;
+
+    img {
+        height: 100%;
+    }
+}
+
+.my-masonry-image-list {
+    @include image-list.masonry-columns(5);
+}
+
+.mainTitle {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    h1 {
+        font-size: 36px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+}
+
+.nsfw-switch-cont {
+    position: absolute;
+    right: 30px;
+    top: 25%;
+}

@@ -1,0 +1,64 @@
+.menu {
+    position: fixed;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px!important;
+    box-shadow: 0 2px 15px #00000029;
+    left: 0;
+    width: 100%;
+    top: 0;
+    background: var(--primary-background);
+    max-height: 106px;
+}
+
+.menuInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+.logoCont {
+    user-select: none;
+    height: 76px;
+    cursor: pointer;
+    color: white;
+
+    img {
+        height: inherit;
+        max-width: 100%;
+    }
+}
+
+.headerSearchForm {
+    min-width: 400px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+.searchField {
+    width: 100%;
+}
+
+.menuItems {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menuItem {
+    transition: all ease 0.2s;
+}
+
+.menuItem:hover {
+    transition: all ease 0.2s;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.activeItem {
+    text-decoration: underline;
+}

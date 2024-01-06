@@ -1,0 +1,41 @@
+<div class="mainTitle">
+    <!--<div class="searchCont">
+        <mat-icon class="searchButton" (click)="showSearchBar()">
+            search
+        </mat-icon>
+
+        <div class="searchBarCont" [@showHideSearch]="showHideSearch ? 'expanded' : 'collapsed'">
+            <input #searchBarInput class="searchBar" type="text" matInput placeholder="Search" (input)="filterMembers(searchBarInput.value)" />
+            <mat-icon mat-icon-button matSuffix *ngIf="searchBarInput.value.length > 1">clear</mat-icon>
+          </div>
+    </div>
+
+    <mat-chip-listbox aria-label="Weapon selection">
+        <mat-chip-option [selected]="weapon.selected" *ngFor="let weapon of uniqueWeapons" [value]="weapon" (click)="updateFilter(weapon)">
+            {{ weapon.weapon }}
+        </mat-chip-option>
+    </mat-chip-listbox>-->
+
+    <h1>
+        Google Gang Gallery
+    </h1>
+
+    <section class="nsfw-switch-cont">
+        <mat-slide-toggle class="nsfw-switch" [checked]="nsfwToggle" (change)="nsfwToggle = $event.checked">
+            NSFW
+        </mat-slide-toggle>
+    </section>
+
+</div>
+
+<ul *ngIf="!nsfwToggle" class="mdc-image-list mdc-image-list--masonry my-masonry-image-list" [photoGalleryGroup]="{ arrowEl: true, indexIndicatorSep: ' - ' }">
+    <li class="mdc-image-list__item" *ngFor="let img of sfwDB" [photoGallery]="img.relativePath">
+        <img class="mdc-image-list__image" [src]="img.relativePath">
+    </li>
+</ul>
+
+<ul *ngIf="nsfwToggle" class="mdc-image-list mdc-image-list--masonry my-masonry-image-list" [photoGalleryGroup]="{ arrowEl: true, indexIndicatorSep: ' - ' }">
+    <li class="mdc-image-list__item" *ngFor="let img of nsfwDB" [photoGallery]="img.relativePath">
+        <img class="mdc-image-list__image" [src]="img.relativePath">
+    </li>
+</ul>

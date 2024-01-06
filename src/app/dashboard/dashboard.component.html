@@ -1,0 +1,49 @@
+<div class="main">
+    <div class="mainInner">
+        <div class="competitiveItems">
+            <div class="pannelTitle">
+                <h3>Competitive Items</h3>
+            </div>
+            <ng-container *ngIf="isLoading">
+                <mat-spinner></mat-spinner>
+            </ng-container>
+
+            <ng-container *ngIf="!isLoading">
+                <div class="compRow flexRow flexSpaceBetween">
+                    <ng-container *ngFor="let item of competitiveItems; let i = index">
+                        <div class="compItem" (click)="selectItem(item.id)">
+                            <div class="compItemImg">
+                                <img *ngIf="item.image" [src]="item.image">
+                                <img *ngIf="!item.image" src="../../assets/images/NW Stacked Wht.png">
+                            </div>
+
+                            <div class="compItemDetail">
+                                <div class="compItemTitle">
+                                    <span>{{item.name}}</span>
+                                </div>
+
+                                <div class="compItemMeta">
+                                    <div class="compItemType">
+                                        <span *ngIf="item.itemType">{{item.itemType}}</span>
+                                        <span *ngIf="item.tradeSkill">{{item.tradeSkill}}</span>
+                                        <span *ngIf="!item.tradeSkill && !item.itemType">N/A</span>
+                                    </div>
+
+                                    <div class="compItemTier">
+                                        <span *ngIf="item.tier == 1">Tier 1</span>
+                                        <span *ngIf="item.tier == 2">Tier 2</span>
+                                        <span *ngIf="item.tier == 3">Tier 3</span>
+                                        <span *ngIf="item.tier == 4">Tier 4</span>
+                                        <span *ngIf="item.tier == 5">Tier 5</span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

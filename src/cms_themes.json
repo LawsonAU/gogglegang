@@ -1,0 +1,50 @@
+{
+	"PROJECT": {
+        "logo": "assets/images/NW Full.png",
+		"logoImgTitle": "Site Logo",
+		"loginBackgroundStyleCss": {},
+		"variables": [
+			{"key": "--primary-color", "value": "#551F85"},
+			{"key": "--accent-color", "value": "#d8176f"},
+            {"key": "--accent-color-1", "value": "#00b389"},
+            {"key": "--accent-color-2", "value": "#1ac0de"},
+            {"key": "--accent-color-3", "value": "#F6B31F"},
+            {"key": "--primary-background", "value": "#f6f6f6"},
+            {"key": "--primary-header-color", "value": "#232821"},
+            {"key": "--primary-card-background", "value": "#ffffff"},
+            {"key": "--primary-text-color", "value": "#333333"},
+            {"key": "--primary-shadow-large", "value": "10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff"},
+            {"key": "--primary-shadow-small", "value": "5px 5px 10px #d1d1d1, -5px -5px 15px #ffffff"},
+            {"key": "--primary-shadow-inner-small", "value": "inset 5px 5px 10px #d1d1d1, inset -5px -5px 15px #ffffff"},
+			{"key": "--primary-shadow-universal", "value": "0px 2px 5px #0000001a"},
+            {"key": "--menu-solid", "value": "#232821"},
+            {"key": "--menu-gradient", "value": null},
+            {"key": "--primary-color-rgb", "value": "238, 111, 56"},
+			{"key": "--accent-color-rgb", "value": "239, 58, 79"}
+		]
+	},
+    "PROJECT_DARK": {
+        "logo": "assets/images/NW Full Wht.png",
+		"logoImgTitle": "Site Logo",
+		"loginBackgroundStyleCss": {},
+		"variables": [
+			{"key": "--primary-color", "value": "#551F85"},
+			{"key": "--accent-color", "value": "#d8176f"},
+            {"key": "--accent-color-1", "value": "#00b389"},
+            {"key": "--accent-color-2", "value": "#1ac0de"},
+            {"key": "--accent-color-3", "value": "#F6B31F"},
+            {"key": "--primary-background", "value": "#262626"},
+            {"key": "--primary-header-color", "value": "#ffffff"},
+            {"key": "--primary-card-background", "value": "#424242"},
+            {"key": "--primary-text-color", "value": "#ffffff"},
+            {"key": "--primary-shadow-large", "value": "10px 10px 30px #202020, -10px -10px 30px #2c2c2c"},
+            {"key": "--primary-shadow-small", "value": "5px 5px 10px #202020, -5px -5px 15px #2c2c2c"},
+            {"key": "--primary-shadow-inner-small", "value": "inset 5px 5px 10px #383838, inset -5px -5px 15px #4c4c4c"},
+            {"key": "--menu-solid", "value": "#EE394D"},
+            {"key": "--menu-gradient", "value": null},
+            {"key": "--primary-shadow-universal", "value": "0px 2px 5px #0000001a"},
+			{"key": "--primary-color-rgb", "value": "238, 111, 56"},
+			{"key": "--accent-color-rgb", "value": "239, 58, 79"}
+		]
+	}
+}

@@ -1,0 +1,82 @@
+.competitiveItems {
+    background-color: var(--primary-card-background);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: var(--primary-shadow-large);
+}
+
+.pannelTitle {
+    margin-bottom: 15px;
+}
+
+.compItem {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    background-image: url(https://cdn.nwdb.info/static/images/tooltip_header_bg_0.jpg);
+    background-size: cover;
+    padding: 15px;
+    min-width: 375px;
+    box-shadow: var(--primary-shadow-universal);
+    transition: all ease 0.2s;
+    border-radius: 4px;
+}
+
+.compItem:hover {
+    cursor: pointer;
+    transition: all ease 0.2s;
+    box-shadow: var(--primary-shadow-small);
+}
+
+.compItemDetail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.compItemTitle {
+    span {
+        font-weight: 500;
+        line-height: 1.2;
+        font-size: 1.25rem;
+        text-shadow: 2px 2px 3px rgba(0,0,0,.75);
+    }
+}
+
+.compItemMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    span {
+        display: block;
+        text-transform: capitalize;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.2;
+        text-shadow: 2px 2px 3px rgba(0,0,0,.75);
+    }
+}
+
+.compItemImg {
+    min-width: 75px;
+    min-height: 75px;
+    max-width: 75px;
+    max-height: 75px;
+    background: linear-gradient(360deg,rgba(var(--rarity-0),.25) 0,rgba(0,0,0,.5) 100%);
+    border: 1px solid rgba(255,255,255,.5);
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+    }
+}
+
+.compRow {
+    gap: 15px;
+    flex-wrap: wrap;
+}

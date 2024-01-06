@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+    <!-- Render form controls for the item data here -->
+    <input type="text" formControlName="name">
+    <!-- Other form controls -->
+
+    <!-- Render ingredients recursively
+    <div *ngFor="let ingredient of form.get('ingredients'); let i = index">
+        <app-item [item]="ingredient.value"></app-item>
+    </div>
+</form>-->

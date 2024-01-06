@@ -1,0 +1,238 @@
+.pageHeaderCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 45px 0;
+    text-align: center;
+}
+
+.pageSubHeader {
+    font-size: 26px;
+    line-height: 33.8px;
+    font-weight: 500;
+    display: block;
+}
+
+.pageHeader {
+    font-size: 120px;
+    line-height: 156px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.pageBody {
+    max-width: 460px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 300;
+    text-align: center;
+    display: block;
+}
+
+.levelRow {
+    display: flex;
+    gap: 5px;
+    min-width: 178px;
+    height: 20px;
+}
+
+.levelFull {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    padding-right: 4%;
+    opacity: 1;
+    background-color: rgb(8, 215, 247);
+    background-clip: content-box;
+    transform: skewX(-40deg);
+}
+
+.levelOpaque {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    padding-right: 4%;
+    opacity: 1;
+    background-color: rgba(8, 215, 247, 0.5);
+    background-clip: content-box;
+    transform: skewX(-40deg);
+}
+
+.filterMain {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.weaponFilter {
+    margin-bottom: 30px;
+}
+
+.flexRow {
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.playerCard {
+    flex: 0 0 calc(33% - 5.3px);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    overflow: hidden;
+    border: 4px;
+}
+
+.playerImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all ease 0.2s;
+    /* Make sure the image takes the full width of its container */
+}
+
+.playerCard:hover {
+    .playerImage {
+        transform: scale(1.1);
+        transition: all ease 0.2s;
+    }
+
+    .playerName {
+        padding-left: 15px;
+    }
+
+    .playerDetail {
+        background-color: #8732D3;
+    }
+
+}
+
+.playerImageCont {
+    height: 300px;
+}
+
+.playerName {
+    display: block;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+    transition: all ease 0.2s;
+}
+
+.playerDetail {
+    background-color: #551F85;
+    padding: 10px 15px;
+    z-index: 2;
+    position: relative;
+    transition: all ease 0.2s;
+}
+
+.searchCont {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.searchButton {
+    cursor: pointer;
+}
+
+.searchFilterCont {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-end;
+
+    .searchMenu {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+.playerCardRow {
+    padding-bottom: 30px;
+}
+
+.searchBarCont {
+    .searchBarIcon {
+        position: absolute;
+        right: 10px;
+        top: calc(50% - 12px);
+    }
+}
+
+.searchBar {
+    background-color: #ffffff;
+    border-radius: 4px;
+    width: 350px;
+    outline: none;
+    border: none;
+    height: 44px;
+    padding-left: 10px;
+}
+
+.searchButton {
+    height: 46px;
+    width: 46px;
+    font-size: 46px;
+}
+
+/* Responsive styles for medium-sized screens (tablets, smaller desktops) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .pageWidth {
+        padding: 0 40px;
+    }
+}
+
+/* Responsive styles for small screens (phones) */
+@media only screen and (min-width: 1px) and (max-width: 767px) {
+    .mobileHide {
+        display: none;
+    }
+
+    .pageWidth {
+        padding: 0 20px;
+        width: calc(100% - 55px);
+        margin: 0;
+    }
+
+    /* Example: Make text elements responsive on mobile */
+    h1, h2, h3, p {
+        font-size: 16px; /* Adjust the font size as needed */
+    }
+
+    .pageHeader {
+        font-size: 80px;
+        line-height: 104px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .playerCard {
+        flex: 0 0 calc(50% - 7.5px);
+    }
+
+    .filterMain {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 15px;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .searchBar {
+        width: 270px;
+    }
+}

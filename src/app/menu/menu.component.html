@@ -1,0 +1,38 @@
+<div class="menu" id="menu">
+    <div class="menuInner">
+        <div class="logoCont">
+            <img routerLink="/" id="logo" class="logo" src="../../assets/images/logo-wide-wht.webp">
+        </div>
+
+        <div class="menuItems">
+            <ng-container *ngFor="let item of menuItems">
+                <span class="menuItem" [ngClass]="currentRoute == item.route || (currentRoute == '' && item.route == 'home') ? 'activeItem' : ''"
+                (click)="goToRoute(item)">
+                    {{item.name}}
+                </span>
+            </ng-container>
+        </div>
+
+        <div class="logoCont">
+            <img routerLink="/" id="logo" class="logo mobileHide" src="../../assets/images/NW Full Wht.png">
+        </div>
+
+        <!--<div class="searchCont">
+            <form class="headerSearchForm">
+                <mat-form-field class="searchField">
+                    <mat-label>Search</mat-label>
+                    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" (keydown.enter)="onSearchSubmit($event)">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            <span class="acOption">
+                                <img *ngIf="option.imageUrl" [src]="option.imageUrl">
+                                <img *ngIf="!option.imageUrl" src="../../assets/images/NW Stacked.png">
+                                {{option.name}}
+                            </span>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>-->
+    </div>
+</div>

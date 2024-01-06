@@ -1,0 +1,19 @@
+h1 {
+	font-size: 40px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.missingContainer{
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+    background: var(--primary-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+	margin-bottom: 20px;
+}

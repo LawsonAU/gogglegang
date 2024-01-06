@@ -1,0 +1,79 @@
+<div class="imageHeader">
+    <div class="imageBackground" [style.backgroundImage]="'url(' + currentMember.image + ')'"></div>
+    <div class="featureImageCont" [@fade]>
+        <img class="featureImage" [src]="currentMember.image">
+    </div>
+
+    <div class="detailCont">
+        <div class="detailHeaderCont">
+            <span class="detailSubHeader">
+                {{currentMember.shortDesc}}
+            </span>
+
+            <span class="detailHeader">
+                {{currentMember.name}}
+            </span>
+        </div>
+
+        <div class="detailBody">
+            <div class="detailIcons">
+                <div class="detailRole">
+                    <div class="roleIcon">
+                        <img [src]="currentMember.roleImage" style="width: 100%;">
+                    </div>
+
+                    <div class="roleName">
+                        <span>{{currentMember.role}}</span>
+                    </div>
+                </div>
+
+                <div class="detailKSlevel">
+                    <div class="KSicons">
+                        <span class="levelRow">
+                            <span [ngClass]="currentMember.KSLevel >= 1 ? 'levelFull' : 'levelOpaque'"></span>
+                            <span [ngClass]="currentMember.KSLevel >= 2 ? 'levelFull' : 'levelOpaque'"></span>
+                            <span [ngClass]="currentMember.KSLevel >= 3 ? 'levelFull' : 'levelOpaque'"></span>
+                        </span>
+                    </div>
+
+                    <div class="KSlevelTxt">
+                        <span>Kill Steal Potential</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detailBodyLine mobileHide"></div>
+
+            <div class="detailDesc">
+                <p>{{currentMember.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pageWidth" *ngIf="currentMember?.skins?.length > 0">
+    <div class="skinsWindow">
+        <div class="skinsMenu">
+            <div class="skinMenuTitle">
+                <span>Skins</span>
+            </div>
+
+            <div class="skinMenuItems">
+                <div class="skinMenuItem" *ngFor="let skin of currentMember.skins" (click)="selectSkin(skin)"
+                [ngClass]="selectedSkin.fileName == skin.fileName ? 'itemSelected' : 'itemNotSelected'">
+                    <div class="itemImageCont">
+                        <img class="itemImage" [src]="skin.relativePath">
+                    </div>
+
+                    <div class="itemNameCont">
+                        <span>{{skin.skinName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skinFullCont">
+            <img class="skinFullImg" [@fadeStnd] [src]="selectedSkin.relativePath">
+        </div>
+    </div>
+</div>

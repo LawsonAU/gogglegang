@@ -1,0 +1,324 @@
+.imageHeader {
+    position: relative;
+}
+
+.imageBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(8px);
+}
+
+.imageBackground::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgb(0, 9, 19) 70%);
+}
+
+.featureImageCont {
+    max-width: 1425px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 90px;
+    overflow: hidden;
+
+    .featureImage {
+        position: relative;
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 0px 2px 5px #0000001a;
+        mask-image: linear-gradient(rgb(0, 0, 0) 65%, rgba(0, 0, 0, 0) 98%);
+        -webkit-mask-image: linear-gradient(rgb(0, 0, 0) 65%, rgba(0, 0, 0, 0) 98%);
+    }
+}
+
+.detailCont {
+    max-width: 1425px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 90px;
+    overflow: hidden;
+    position: relative;
+    top: -160px;
+}
+
+.detailHeaderCont {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.detailSubHeader {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    display: block;
+}
+
+.detailHeader {
+    font-size: 120px;
+    line-height: 120px;
+    font-weight: 700;
+    display: block;
+    font-family: 'BlackPearl';
+}
+
+.detailBody {
+    display: flex;
+    align-items: center;
+    max-width: 75%;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.detailIcons {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.detailDesc {
+    flex: 1;
+}
+
+.detailBodyLine {
+    width: 1px;
+    margin: 2.5rem 0px;
+    background: rgba(255, 255, 255, 0.2);
+    transform-origin: center top;
+}
+
+.levelRow {
+    display: flex;
+    gap: 5px;
+    min-width: 178px;
+    height: 20px;
+}
+
+.levelFull {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    padding-right: 4%;
+    opacity: 1;
+    background-color: rgb(8, 215, 247);
+    background-clip: content-box;
+    transform: skewX(-40deg);
+}
+
+.levelOpaque {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    padding-right: 4%;
+    opacity: 1;
+    background-color: rgba(8, 215, 247, 0.5);
+    background-clip: content-box;
+    transform: skewX(-40deg);
+}
+
+.detailRole {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.roleIcon {
+    width: 100px;
+    height: 106px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roleName {
+    span {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.detailKSlevel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.KSicons {
+    height: 106px;
+    display: flex;
+    align-items: center;
+}
+
+.KSlevelTxt {
+    span {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.pageWidth {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.skinsWindow {
+    height: 802px;
+    width: 100%;
+    position: relative;
+}
+
+.skinsMenu {
+    max-width: 20%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+
+    .skinMenuTitle {
+        padding: 15px;
+
+        span {
+            font-size: 44px;
+            line-height: 57.2px;
+            font-weight: 600;
+        }
+    }
+
+    .skinMenuItems {
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 715px;
+    }
+}
+
+.itemSelected {
+    opacity: 1;
+}
+
+.itemNotSelected {
+    opacity: 0.7;
+}
+
+.skinMenuItem {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    transition: all ease 0.2s;
+
+    .itemImageCont {
+        width: 75px;
+        height: 75px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all ease 0.2s;
+        }
+    }
+}
+
+.skinMenuItem:hover {
+    opacity: 1;
+    transition: all ease 0.2s;
+    cursor: pointer;
+
+    .itemImageCont {
+        img {
+            transform: scale(1.05);
+            transition: all ease 0.2s;
+        }
+    }
+}
+
+.skinFullImg {
+    width: 100%;
+}
+
+/* Responsive styles for medium-sized screens (tablets, smaller desktops) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .pageWidth {
+        padding: 0 40px;
+    }
+}
+
+/* Responsive styles for small screens (phones) */
+@media only screen and (min-width: 1px) and (max-width: 767px) {
+    .mobileHide {
+        display: none;
+    }
+
+    .featureImageCont {
+        padding: 45px 20px;
+        width: calc(100% - 55px);
+        margin: 0;
+    }
+
+    .detailCont {
+        padding: 0 20px;
+        width: calc(100% - 55px);
+        margin: 0;
+        top: -110px;
+    }
+
+    .detailHeader {
+        font-size: 70px;
+        line-height: 91px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .detailBody {
+        flex-direction: column;
+    }
+
+    .detailIcons {
+        gap: 15px;
+    }
+
+    .skinsMenu {
+        max-width: 100%;
+        max-height: 20%;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+
+    .skinMenuItems {
+        gap: 15px;
+        overflow-y: clip;
+        overflow-x: auto;
+        flex-direction: row!important;
+        max-height: 100%!important;
+    }
+
+    .skinMenuItem {
+        .skinMenuItem {
+            flex-direction: column;
+        }
+    }
+}
