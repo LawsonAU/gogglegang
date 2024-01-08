@@ -80,3 +80,16 @@
     gap: 15px;
     flex-wrap: wrap;
 }
+
+.Msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    flex-direction: column;
+
+    h1 {
+        font-size: 100px;
+        line-height: 1.3;
+    }
+}

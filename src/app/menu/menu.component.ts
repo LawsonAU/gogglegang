@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, startWith, switchMap, } from 'rxjs/operators';
 import { default as itemsDB } from '../../assets/items.final.json';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { AuthService } from '../auth.service';
+import { LoginService } from '../login/login.service';
 
 export interface Item {
     tier?: number;
@@ -28,18 +30,29 @@ export interface Item {
     styleUrls: ['./menu.component.scss']
 })
 
-
 export class MenuComponent implements OnInit {
+    @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger: MatMenuTrigger;
 
-    currentRoute: any = null;
+    currentRoute: string = "";
 
     constructor(
-        private http: HttpClient,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private authService: AuthService,
+        private loginService: LoginService
     ) { }
 
+    get isAuthenticated(): boolean {
+        return this.authService.isAuthenticated;
+    }
+
+    get isServer(): boolean {
+        return this.authService.isServer;
+    }
+
     mainDB: any;
+
+    menuTopLeftPosition: any = { x: 0, y: 0 };
 
     myControl = new FormControl<string | Item>('');
     options: Item[] = itemsDB;
@@ -47,12 +60,81 @@ export class MenuComponent implements OnInit {
 
     menuItems = [
         {
-            name: 'Home',
-            route: '/'
+            name: 'Members',
+            route: '/',
+            dropdown: true
         },
         {
             name: 'Gallery',
-            route: '/gallery'
+            route: '/gallery',
+            dropdown: false
+        },
+        {
+            name: 'Lore',
+            route: '/lore',
+            dropdown: false
+        }
+    ]
+
+    members = [
+        {
+            name: 'All Members',
+            route: '/',
+            icon: '../../assets/images/NW-bug.svg'
+        },
+        {
+            name: 'Shadres',
+            route: '/detail/shadres',
+            icon: '../../assets/images/role-icons/archer.png'
+
+        },
+        {
+            name: 'Cxbby',
+            route: '/detail/cxbby',
+            icon: '../../assets/images/role-icons/healer.png'
+
+        },
+        {
+            name: 'Edubbay',
+            route: '/detail/edubbay',
+            icon: '../../assets/images/role-icons/Gunner.png'
+
+        },
+        {
+            name: 'Freezingtemps',
+            route: '/detail/freezingtemps',
+            icon: '../../assets/images/role-icons/tank.png'
+
+        },
+        {
+            name: 'Spooki',
+            route: '/detail/spooki',
+            icon: '../../assets/images/role-icons/ab-wizard.png'
+
+        },
+        {
+            name: 'Sedana',
+            route: '/detail/sedana',
+            icon: '../../assets/images/role-icons/kill-thief.png'
+
+        },
+        {
+            name: 'Kesther',
+            route: '/detail/kesther',
+            icon: '../../assets/images/role-icons/magician.png'
+
+        },
+        {
+            name: 'Yumemii',
+            route: '/detail/yumemii',
+            icon: '../../assets/images/role-icons/healer.png'
+
+        },
+        {
+            name: 'Box',
+            route: '/detail/box',
+            icon: '../../assets/images/role-icons/warrior.png'
+
         }
     ]
 
@@ -60,6 +142,8 @@ export class MenuComponent implements OnInit {
     private maxItemsToShow = 50;
 
     ngOnInit() {
+        this.currentRoute = this.router.url;
+
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.currentRoute = event.url;
@@ -77,6 +161,20 @@ export class MenuComponent implements OnInit {
         this.myControl.valueChanges.subscribe((value: any) => {
             this.filterValueSubject.next(value);
         });
+    }
+
+    openMenu(evt, name) {
+        const mouseX = evt.clientX;
+        const mouseY = evt.clientY;
+
+        this.menuTopLeftPosition = { x: mouseX, y: mouseY };
+        if (name === 'Members') {
+            this.matMenuTrigger.openMenu();
+        }
+    }
+
+    closeMenu(evt) {
+        this.matMenuTrigger.closeMenu();
     }
 
     private getFilteredOptions(name: string): Observable<Item[]> {
@@ -129,6 +227,10 @@ export class MenuComponent implements OnInit {
             // Navigate to the 'calculator' route with the selected option's marketId
             this.goToRoute({ route: 'calculator' }, selectedOption.marketId);
         }
+    }
+
+    logout() {
+        this.loginService.logout();
     }
 }
 

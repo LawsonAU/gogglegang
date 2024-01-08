@@ -50,6 +50,11 @@ export class ApiInterfaceService {
         }
     }
 
+    getMarket(path: any, params?: any) {
+        this.updateAuthHeader(params);
+        return this.http.get(environment.marketDomain + path, { params: params, headers: this.baseHeader });
+    }
+
     get(path: any, params?: any) {
         this.updateAuthHeader(params);
         return this.http.get(this.baseUrl + path, { params: params, headers: this.baseHeader });
@@ -61,7 +66,6 @@ export class ApiInterfaceService {
     }
 
     getNoKey(path: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
         return this.http.get(this.baseUrl + path, { params: params, headers: this.baseHeaderNoAccessKey });
     }
 
@@ -81,7 +85,6 @@ export class ApiInterfaceService {
     }
 
     postNoKey(path: any, body?: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
         return this.http.post(this.baseUrl + path, body, { params: params, headers: this.baseHeader });
     }
 

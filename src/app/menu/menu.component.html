@@ -1,38 +1,78 @@
 <div class="menu" id="menu">
-    <div class="menuInner">
-        <div class="logoCont">
-            <img routerLink="/" id="logo" class="logo" src="../../assets/images/logo-wide-wht.webp">
-        </div>
+    <div class="logoCont mainLogo">
+        <img routerLink="/" id="logo" class="logo" src="../../assets/images/logo-wide-wht.webp">
+    </div>
 
+    <div class="menuInner">
         <div class="menuItems">
+            <div class="logoCont flexLogo" style="margin-right: 10px;">
+                <img id="logo" class="logo" src="../../assets/images/NW Stacked Wht.png">
+            </div>
+
             <ng-container *ngFor="let item of menuItems">
-                <span class="menuItem" [ngClass]="currentRoute == item.route || (currentRoute == '' && item.route == 'home') ? 'activeItem' : ''"
-                (click)="goToRoute(item)">
-                    {{item.name}}
-                </span>
+                <div class="menuItem" [ngClass]="currentRoute == item.route || (currentRoute == '' && item.route == 'home') ? 'activeItem' : ''"
+                (click)="goToRoute(item)" (mouseenter)="openMenu($event, item.name)">
+                    <span>
+                        {{item.name}}
+                        <mat-icon *ngIf="item.dropdown">
+                            expand_more
+                        </mat-icon>
+                    </span>
+                </div>
             </ng-container>
         </div>
 
-        <div class="logoCont">
-            <img routerLink="/" id="logo" class="logo mobileHide" src="../../assets/images/NW Full Wht.png">
-        </div>
+        <div class="menuItems">
+            <div class="menuBtn" routerLink="/login" *ngIf="!isAuthenticated">
+                <span>
+                    Login
+                </span>
+            </div>
 
-        <!--<div class="searchCont">
-            <form class="headerSearchForm">
-                <mat-form-field class="searchField">
-                    <mat-label>Search</mat-label>
-                    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" (keydown.enter)="onSearchSubmit($event)">
-                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            <span class="acOption">
-                                <img *ngIf="option.imageUrl" [src]="option.imageUrl">
-                                <img *ngIf="!option.imageUrl" src="../../assets/images/NW Stacked.png">
-                                {{option.name}}
-                            </span>
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </form>
-        </div>-->
+            <div class="menuBtn" (click)="logout()" *ngIf="isAuthenticated">
+                <span>
+                    Logout
+                </span>
+            </div>
+
+            <div class="logoCont flexLogo" style="margin-right: 10px;">
+                <img id="logo" class="logo" src="../../assets/images/syndicate.png">
+            </div>
+        </div>
     </div>
+
+    <!--<div class="logoCont">
+        <img routerLink="/" id="logo" class="logo mobileHide" src="../../assets/images/NW Full Wht.png">
+    </div>
+
+    <div class="searchCont">
+        <form class="headerSearchForm">
+            <mat-form-field class="searchField">
+                <mat-label>Search</mat-label>
+                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" (keydown.enter)="onSearchSubmit($event)">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        <span class="acOption">
+                            <img *ngIf="option.imageUrl" [src]="option.imageUrl">
+                            <img *ngIf="!option.imageUrl" src="../../assets/images/NW Stacked.png">
+                            {{option.name}}
+                        </span>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>-->
 </div>
+
+<div style="visibility: hidden; position: fixed;" [style.left.px]="menuTopLeftPosition.x" [style.top.px]="menuTopLeftPosition.y" [matMenuTriggerFor]="memberDropdown"></div>
+
+<mat-menu #memberDropdown="matMenu">
+    <ng-container>
+        <div class="ddList" (mouseleave)="closeMenu($event)">
+            <button class="ddBtn" mat-menu-item *ngFor="let member of members" (click)="goToRoute(member)">
+                <img class="ddIcon" [src]="member.icon">
+                <span>{{member.name}}</span>
+            </button>
+        </div>
+    </ng-container>
+</mat-menu>

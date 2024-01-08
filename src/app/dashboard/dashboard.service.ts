@@ -12,17 +12,19 @@ export class DashboardService {
     ) { }
 
     async getGeneralServerInfo(serverId) {
-		try {
-			return this.api.get('server-price-data/' + serverId, '');
-		} catch (e) {
-			console.log(e);
-			throw new Error(e);
-		}
+        try {
+            const result = await this.api.getNoKey('api/server-price-data/' + serverId, '');
+            return result;
+        } catch (e) {
+            console.error('Error in getGeneralServerInfo:', e);
+            throw e; // Re-throw the caught error
+        }
     }
+
 
     async getitemInfo(selectedServerId, itemId) {
 		try {
-			return this.api.get('price-data/' + selectedServerId + '/' + itemId, '');
+			return this.api.getNoKey('api/price-data/' + selectedServerId + '/' + itemId, '');
 		} catch (e) {
 			console.log(e);
 			throw new Error(e);
@@ -30,6 +32,6 @@ export class DashboardService {
     }
 
     getitemInfoAlt(selectedServerId, itemId) {
-        return this.api.get('price-data/' + selectedServerId + '/' + itemId, '');
+        return this.api.getNoKey('api/price-data/' + selectedServerId + '/' + itemId, '');
     }
 }

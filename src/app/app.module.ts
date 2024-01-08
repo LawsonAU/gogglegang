@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemComponent } from './item/item.component';
 import { MaterialCssVarsModule } from "angular-material-css-vars";
 import { MissingComponent } from './missing/missing.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { MissingComponent } from './missing/missing.component';
         DisplayOutletComponent,
         MenuComponent,
         ItemComponent,
-        MissingComponent
+        MissingComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,

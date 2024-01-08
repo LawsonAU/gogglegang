@@ -1,0 +1,46 @@
+<div class="login-container">
+    <div class="image-container" [@fade]="currentImage ? 'fadeInOut' : 'void'">
+        <div class="dark-background"></div>
+        <img [src]="currentImage" alt="Revolving Image" class="revolving-image">
+    </div>
+
+
+    <div class="form-container">
+        <div class="formHeadCont">
+            <h2 class="formHeader">Welcome to Goggle Gang</h2>
+            <p class="formSubHeader">Don't have an account? Sucks to be you.</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="ggFormField" appearance="fill">
+                <mat-label>Username or Email</mat-label>
+                <input matInput type="text" id="username" formControlName="username">
+                <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+                    Username or Email is required
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('username')?.hasError('email')">
+                    Invalid email address
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="ggFormField" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="passwordHidden ? 'password' : 'text'" id="password" formControlName="password">
+                <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)">
+                    <mat-icon>{{ passwordHidden ? 'visibility' : 'visibility_off' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button type="submit" [disabled]="isLoading">Login</button>
+        </form>
+
+        <span class="goBack" routerLink="/">
+            Go back to Homepage
+        </span>
+    </div>
+</div>
+
+<div class="fixedLogo">
+    <img routerLink="/" id="logo" class="logo" src="../../assets/images/logo-wide-wht.webp">
+</div>

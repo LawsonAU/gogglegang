@@ -1,0 +1,116 @@
+/* login.component.scss */
+
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+
+.image-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-background {
+    background-color: #333333;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.revolving-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%) scale(1.2);
+    animation: rotateImages 5s linear infinite;
+}
+
+.fixed-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-background);
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+
+        .ggFormField {
+            width: 330px;
+        }
+    }
+
+    .formHeadCont {
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        margin-bottom: 15px;
+        color: var(--primary-header-color);
+    }
+
+    .formHeader {
+        font-size: 1.8em;
+        font-weight: 600;
+    }
+}
+
+@keyframes rotateImages {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    20%,
+    80% {
+        opacity: 1;
+    }
+}
+
+.goBack {
+    color: white;
+    cursor: pointer;
+    transition: all ease 0.2s;;
+}
+
+.goBack:hover {
+    opacity: 0.8;
+    transition: all ease 0.2s;
+}
+
+.fixedLogo {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 300px;
+    user-select: none;
+
+    .logo {
+        width: 100%;
+    }
+}

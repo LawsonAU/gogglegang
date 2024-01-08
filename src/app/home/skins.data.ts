@@ -91,15 +91,15 @@ export const skinData = {
             // ... other skins in the Villain group
         ],
         [
-            { "skinName": "Windsward Adventures Guild", "name": "Box", "fileName": "box-anime.webp", "relativePath": "../../assets/images/Skins/windsward/box-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Cxbby", "fileName": "cxbby-anime.webp", "relativePath": "../../assets/images/Skins/windsward/cxbby-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Edubbay", "fileName": "edubbay-anime.webp", "relativePath": "../../assets/images/Skins/windsward/edubbay-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Kesther", "fileName": "kesther-anime.webp", "relativePath": "../../assets/images/Skins/windsward/kesther-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Ritchie", "fileName": "ritchie-anime.webp", "relativePath": "../../assets/images/Skins/windsward/ritchie-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Sedana", "fileName": "sedana-anime.webp", "relativePath": "../../assets/images/Skins/windsward/sedana-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Shadres", "fileName": "shadres-anime.webp", "relativePath": "../../assets/images/Skins/windsward/shadres-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Spooki", "fileName": "spooki-anime.webp", "relativePath": "../../assets/images/Skins/windsward/spooki-anime.webp" },
-            { "skinName": "Windsward Adventures Guild", "name": "Yumemii", "fileName": "yumemii-anime.webp", "relativePath": "../../assets/images/Skins/windsward/yumemii-anime.webp" }
+            { "skinName": "Windsward Adventures Guild", "name": "Box", "fileName": "box-anime.webp", "relativePath": "../../assets/images/Skins/windsward/box-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Cxbby", "fileName": "cxbby-anime.webp", "relativePath": "../../assets/images/Skins/windsward/cxbby-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Edubbay", "fileName": "edubbay-anime.webp", "relativePath": "../../assets/images/Skins/windsward/lily-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Kesther", "fileName": "kesther-anime.webp", "relativePath": "../../assets/images/Skins/windsward/kesther-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Ritchie", "fileName": "ritchie-anime.webp", "relativePath": "../../assets/images/Skins/windsward/richie-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Sedana", "fileName": "sedana-anime.webp", "relativePath": "../../assets/images/Skins/windsward/sedana-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Shadres", "fileName": "shadres-anime.webp", "relativePath": "../../assets/images/Skins/windsward/Shadres-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Spooki", "fileName": "spooki-anime.webp", "relativePath": "../../assets/images/Skins/windsward/spooki-anime-windsward-adventures_guild.jpg" },
+            { "skinName": "Windsward Adventures Guild", "name": "Yumemii", "fileName": "yumemii-anime.webp", "relativePath": "../../assets/images/Skins/windsward/yumemii-anime-windsward-adventures_guild.jpg" }
             // ... other skins in the Villain group
         ]
         // ... other skin groups

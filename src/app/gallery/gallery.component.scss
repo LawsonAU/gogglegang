@@ -25,6 +25,22 @@
 
 .my-masonry-image-list {
     @include image-list.masonry-columns(5);
+
+    @media screen and (max-width: 768px) {
+        @include image-list.masonry-columns(1);
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        @include image-list.masonry-columns(3);
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1200px) {
+        @include image-list.masonry-columns(4);
+    }
+
+    @media screen and (min-width: 1201px) {
+        @include image-list.masonry-columns(5);
+    }
 }
 
 .mainTitle {
@@ -32,7 +48,7 @@
     justify-content: center;
     position: relative;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 118px;
     padding-bottom: 20px;
 
     h1 {
@@ -43,7 +59,60 @@
 }
 
 .nsfw-switch-cont {
-    position: absolute;
-    right: 30px;
-    top: 25%;
+    position: fixed;
+    left: 30px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 3;
+
+    mat-icon {
+        transition: all ease 0.2s;
+        height: 28px;
+        width: 28px;
+        font-size: 28px;
+    }
+
+    mat-icon:hover {
+        cursor: pointer;
+        transition: all ease 0.2s;
+        opacity: 0.8;
+    }
+}
+
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    backdrop-filter: blur(8px); /* Adjust the blur intensity as needed */
+    background-color: var(#202020ad); /* Adjust the last value for opacity */
+}
+
+.loadingInner {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    h1 {
+        font-size: 52px;
+    }
+}
+
+.mdc-image-list {
+    padding-bottom: 86px;
+}
+
+.pagFloat {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
 }

@@ -28,13 +28,11 @@ export class DashboardComponent implements OnInit {
         try {
             // Use HttpClient to fetch 'item-mpdbid.json'
             this.mainDB = await this.http.get('assets/items.final.json').toPromise();
-
-            console.log(this.mainDB);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
 
-        this.getData();
+        //this.getData();
     }
 
     async getData() {
@@ -54,6 +52,7 @@ export class DashboardComponent implements OnInit {
                 tradeSkill: null,
                 tier: null
             }
+
             let lookup = this.mainDB.find(y => y.marketId == x[2]);
             if (lookup) {
                 body.image = lookup.imageUrl;

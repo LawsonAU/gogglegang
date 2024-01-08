@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    domain:'http://localhost:3001',
+    domain:'http://localhost:3001/',
     marketDomain:'https://nwmarketprices.com/api/',
     priceData: 'https://nwmarketprices.com/api/price-data/',
     generalList: 'https://nwmarketprices.com/api/server-price-data/',

@@ -1,0 +1,20 @@
+.lore-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-top: 30px;
+
+    .video-container {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .info-container {
+        flex: 1;
+        max-width: 50%;
+        /* Adjust the width as needed */
+        text-align: left;
+        /* Adjust the text alignment as needed */
+    }
+}
