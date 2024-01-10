@@ -1,0 +1,148 @@
+<div class="pageWidth">
+    <div class="pageInner">
+        <div class="flexSection flexAlignCenter">
+            <div class="flexCol" [@fade]>
+                <img class="flexColImg" src="../../assets/images/art/Kesther-Elementals-Reekwater- wide.webp">
+            </div>
+
+            <div class="flexCol" [@fade300ms]>
+                <h1 class="sectionHeader">Transform Your Imagination into Reality</h1>
+                <p>
+                    Ever dreamed of bringing your unique character to life in stunning detail? Whether it's your
+                    favorite
+                    in-game character, a D&D persona, or a creation straight from your imagination, our art creation
+                    service
+                    turns your vision into a tangible masterpiece. Imagine having a high-resolution rendering of your
+                    character, ready to be showcased in the world of gaming or as a standalone work of art. Explore the
+                    possibilities and let your creativity shine.
+                </p>
+
+                <button class="primaryBtn" (click)="scrollToElement('pricing')">Make me something</button>
+            </div>
+        </div>
+
+        <div class="standSection" id="pricing">
+            <div class="standRow">
+                <h1 class="sectionHeader">If you're good at something, never...</h1>
+                <p>
+                    Creating a detailed character requires precision and skill. Our pricing model reflects the level of
+                    detail and dynamism you desire. From replicating in-game screenshots to crafting original characters
+                    from scratch, we offer a range of options to suit your budget and vision.
+                </p>
+            </div>
+
+            <div class="flexSection">
+                <div class="columns" [@fade]>
+                    <ul class="price">
+                        <li class="header">Basic</li>
+                        <li class="grey">$5 / <span matTooltip="In-Game Currency - New World - Delos">2k Gold</span>
+                        </li>
+                        <li>High Quality Render</li>
+                        <li><span matTooltip="Depending on Phone or tablet">Res: 1024x1536 || 2730x1536</span></li>
+                        <li>
+                            <span matTooltip="Can include magic e.g. Fire Mage, also provide details like hair/eye color">
+                                Image &/or simple prompt
+                            </span>
+                        </li>
+                        <li>No Weapons/Hyper complicated Armor</li>
+                        <li><a class="exampleLink" (click)="scrollToElement('basic')">See examples</a></li>
+                        <li class="grey">
+                            <a class="primaryBtn" target="_blank" href="https://discord.gg/4rT9khvb7g" class="button">
+                                Discord
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="columns" [@fade150ms]>
+                    <ul class="price">
+                        <li class="header" style="background-color:var(--primary-color)">Pro</li>
+                        <li class="grey">$20 / <span matTooltip="In-Game Currency - New World - Delos">10k Gold</span></li>
+                        <li><span matTooltip="Ultra-High Quality">UHQ</span> Render plus hand drawn</li>
+                        <li>Res: <span matTooltip="Depending on Phone or tablet">up to 5600x3584</span></li>
+                        <li>Anything goes within reason</li>
+                        <li><a class="exampleLink" (click)="scrollToElement('pro')">See examples</a></li>
+                        <li>-</li>
+                        <li class="grey">
+                            <a class="primaryBtn" target="_blank" href="https://discord.gg/4rT9khvb7g" class="button">
+                                Discord
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="columns" [@fade300ms]>
+                    <ul class="price">
+                        <li class="header">Custom</li>
+                        <li class="grey">TBD</li>
+                        <li>Need something Special?</li>
+                        <li>Contact us</li>
+                        <li>-</li>
+                        <li>-</li>
+                        <li>-</li>
+                        <li class="grey">
+                            <a class="primaryBtn" target="_blank" href="https://discord.gg/4rT9khvb7g" class="button">
+                                Discord
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="standSection" id="examples" [@fade]>
+            <div class="standRow">
+                <h1 class="sectionHeader" style="text-align: center;">See the Magic Unfold</h1>
+            </div>
+        </div>
+
+        <div class="flexSection flexAlignCenter" id="basic" [@fade150ms]>
+            <div class="flexCol">
+                <h3 class="sectionSubHeader">Examples</h3>
+                <h1 class="sectionHeader">Basic</h1>
+                <p>
+                    To help you envision the possibilities, here are a few examples of our work. We take your prompts
+                    and transform them into unique, breathtaking characters. Whether it's blending celebrity features or
+                    capturing the essence of in-game characters, each piece is a testament to our commitment to bringing
+                    your imagination to life.
+                </p>
+                <p>
+                    The request for this was use a screenshot of an in-game character along with suggestions of red hair
+                    (obvious),
+                    remove the goggles, and face style was a combination of two celebs the client picked.
+                </p>
+
+                <button class="primaryBtn" (click)="scrollToElement('pricing')">I want one</button>
+            </div>
+
+            <div class="flexCol">
+                <img class="flexColImg" src="../../assets/images/art/clientA-Dress-bow-web.webp">
+                <img class="ssFloat" src="../../assets/images/art/clientA-nw-screenshot.webp">
+            </div>
+        </div>
+
+        <div class="flexSection flexAlignCenter" id="pro" style="padding-bottom: 120px">
+            <div class="flexCol">
+                <img class="flexColImg" src="../../assets/images/gallery/sfw/shadres-boltcaster-nt.webp">
+                <img class="zoomFloat" src="../../assets/images/art/shadres-closeup.webp">
+            </div>
+
+            <div class="flexCol">
+                <h3 class="sectionSubHeader">Examples</h3>
+                <h1 class="sectionHeader">Pro</h1>
+                <p>
+                    For this example, one of the Goggle Gang members and the main artist behind all our renders is
+                    Shadres. This is a completely original piece using both hand-drawn and digital editing techniques,
+                    along with several rendering techniques. It is about three times the resolution of a basic render,
+                    providing a lot of fine detail.
+                </p>
+                <p>
+                    Due to incorporating hand drawing techniques getting weapons and more dynamic poses and actions
+                    overall.
+                </p>
+
+                <button class="primaryBtn" (click)="scrollToElement('pricing')">Lets start</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -45,11 +45,10 @@
 
 .mainTitle {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     align-items: center;
-    padding-top: 118px;
-    padding-bottom: 20px;
+    padding: 118px 30px 30px 20px;
 
     h1 {
         font-size: 36px;
@@ -93,6 +92,7 @@
     z-index: 4;
     backdrop-filter: blur(8px); /* Adjust the blur intensity as needed */
     background-color: var(#202020ad); /* Adjust the last value for opacity */
+    user-select: none;
 }
 
 .loadingInner {
@@ -115,4 +115,94 @@
     left: 0;
     right: 0;
     z-index: 2;
+}
+
+.shuffleBtn {
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.shuffleBtn:hover {
+    transition: all ease 0.2s;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.0509803922);
+    cursor: pointer;
+}
+
+.memberList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.memberItem {
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+
+    .ddIcon {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.memberItem:hover {
+    transition: all ease 0.2s;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.0509803922);
+    cursor: pointer;
+}
+
+.selectedMember {
+    background: var(--primary-color);
+    transition: all ease 0.2s;
+}
+
+.filterRow {
+    padding: 0 30px;
+}
+
+.filterBy {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.galleryCont {
+    padding: 0 30px;
+}
+
+.noImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    user-select: none;
+    pointer-events: none;
+
+    p {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
 }

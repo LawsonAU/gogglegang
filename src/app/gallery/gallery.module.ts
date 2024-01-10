@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery';
 import { MasonryGalleryModule } from 'ngx-masonry-gallery';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { MasonryGalleryModule } from 'ngx-masonry-gallery';
                 indexIndicatorSep: '-'
             }
         }),
-        MasonryGalleryModule
+        MasonryGalleryModule,
+        FormsModule
     ]
 })
 

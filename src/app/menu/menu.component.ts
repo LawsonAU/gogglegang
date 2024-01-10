@@ -70,6 +70,11 @@ export class MenuComponent implements OnInit {
             dropdown: false
         },
         {
+            name: 'I want Art',
+            route: '/art',
+            dropdown: false
+        },
+        {
             name: 'Lore',
             route: '/lore',
             dropdown: false
@@ -232,5 +237,10 @@ export class MenuComponent implements OnInit {
     logout() {
         this.loginService.logout();
     }
+
+    goToDiscord() {
+        window.open('https://discord.gg/4rT9khvb7g', '_blank');
+    }
+
 }
 

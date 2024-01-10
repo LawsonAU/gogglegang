@@ -15,7 +15,8 @@ const routes: Routes = [
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'calculator', loadChildren: () => import('./calculator/calculator.module').then(m => m.CalculatorModule) },
             { path: 'gallery', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
-            { path: 'lore', loadChildren: () => import('./lore/lore.module').then(m => m.LoreModule) }
+            { path: 'lore', loadChildren: () => import('./lore/lore.module').then(m => m.LoreModule) },
+            { path: 'art', loadChildren: () => import('./art/art.module').then(m => m.ArtModule) }
         ]
     },
     { path: 'login', component: LoginComponent },

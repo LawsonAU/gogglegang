@@ -1,15 +1,9 @@
 <div class="VideoPane">
     <div class="videPane-bg">
-        <video class="VideoPane-video"
-            src="../../assets/videos/gg-background-vid2.webm"
-            data-src="../../assets/videos/gg-background-vid2.webm"
-            loop="loop"
-            muted="muted"
-            autoplay="autoplay"
-            playsinline="playsinline"
-            preload="auto">
+        <video #myVideo class="VideoPane-video" loop muted playsinline preload="auto">
+            <source src="../../assets/videos/gg-background-vid2.webm" type="video/webm">
+            Your browser does not support the video tag.
         </video>
-
         <div class="VideoPane-overlay"></div>
         <div class="VideoPane-fallback BackgroundVideo-fallback" style="background-image: url('../../assets/images/gallery/sfw/shadres-boltcaster-nt.webp')"></div>
     </div>

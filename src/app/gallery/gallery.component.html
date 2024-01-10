@@ -1,29 +1,82 @@
 <div class="mainTitle">
     <h1>Google Gang Gallery</h1>
+
+    <div class="filterBy">
+        <span>Filter by</span>
+        <mat-chip-listbox aria-label="Tag Select">
+            <mat-chip-option [selected]="showFilterMembers" (click)="expandFilter('member')">Member</mat-chip-option>
+            <mat-chip-option [selected]="showFilterAreas" (click)="expandFilter('area')">Area</mat-chip-option>
+            <mat-chip-option [selected]="showFilterTags" (click)="expandFilter('tags')">Tags</mat-chip-option>
+        </mat-chip-listbox>
+
+        <button mat-mini-fab (click)="clearFilterData()" matTooltip="Clear all filters" *ngIf="filtersActive">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
 </div>
 
-<div>
+<div class="filterRow">
+    <div class="filterTags" [@showHideFilter]="showFilterMembers ? 'expanded' : 'collapsed'">
+        <div class="memberList">
+            <div class="memberItem" *ngFor="let member of membersExt" [ngClass]="{'selectedMember': member.selected}" (click)="toggleSelection(member, 'member')">
+                <img class="ddIcon" [src]="member.icon">
+                <span>{{member.name}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="filterTags" [@showHideFilter]="showFilterTags ? 'expanded' : 'collapsed'">
+        <mat-chip-listbox aria-label="Tag Select">
+            <mat-chip-option (click)="toggleSelection(tag, 'tag')" *ngFor="let tag of sfwFilters" [selected]="isSelected(tag)">
+                {{tag.name}}
+            </mat-chip-option>
+        </mat-chip-listbox>
+    </div>
+
+    <div class="filterTags" [@showHideFilter]="showFilterAreas ? 'expanded' : 'collapsed'">
+        <div class="memberList">
+            <div class="memberItem" *ngFor="let area of areasObjects" [ngClass]="{'selectedMember': area.selected}" (click)="toggleSelection(area, 'area')">
+                <span>{{area.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="galleryCont">
     <ul *ngIf="!nsfwToggle" class="mdc-image-list mdc-image-list--masonry my-masonry-image-list"
         [photoGalleryGroup]="{ arrowEl: true, indexIndicatorSep: ' - ' }">
         <li class="mdc-image-list__item" *ngFor="let img of paginatedSfwDB" [photoGallery]="img.relativePath">
-            <img class="mdc-image-list__image" [src]="img.relativePath" (load)="onImageLoad()">
+            <img class="mdc-image-list__image" [src]="img.relativePath">
         </li>
     </ul>
 
     <ul *ngIf="nsfwToggle" class="mdc-image-list mdc-image-list--masonry my-masonry-image-list"
         [photoGalleryGroup]="{ arrowEl: true, indexIndicatorSep: ' - ' }">
         <li class="mdc-image-list__item" *ngFor="let img of paginatedNsfwDB" [photoGallery]="img.relativePath">
-            <img class="mdc-image-list__image" [src]="img.relativePath" (load)="onImageLoad()">
+            <img class="mdc-image-list__image" [src]="img.relativePath">
         </li>
     </ul>
 
-    <mat-paginator class="pagFloat" [length]="!nsfwToggle ? sfwDB.length : nsfwDB.length" [pageSize]="itemsPerPage" (page)="onPageChange($event)"></mat-paginator>
+    <div class="noImg" *ngIf="!nsfwToggle && paginatedSfwDB.length === 0">
+        <p>No images to show you.</p>
+    </div>
+
+    <div class="noImg" *ngIf="nsfwToggle && paginatedNsfwDB.length === 0">
+        <p>No images to show you.</p><br>
+        <p>巨大な変態の画像はありません</p>
+    </div>
+
+    <mat-paginator class="pagFloat" [length]="!nsfwToggle ? filtersActive ? paginatedSfwDB.length : sfwDB.length : filtersActive ? paginatedNsfwDB.length : nsfwDB.length"
+    [pageSize]="itemsPerPage" (page)="onPageChange($event)"></mat-paginator>
 
     <div class="nsfw-switch-cont">
         <div class="refresh">
-            <mat-icon (click)="shuffleDBs()" matTooltip="Shuffle Gallery">
-                shuffle
-            </mat-icon>
+            <a class="shuffleBtn" (click)="shuffleDBs()">
+                <mat-icon matTooltip="Shuffle Gallery">
+                    shuffle
+                </mat-icon>
+                Shuffle
+            </a>
         </div>
 
         <section class="nsfw-switch-section">
@@ -34,9 +87,9 @@
     </div>
 </div>
 
-<div class="loadingOverlay" *ngIf="!galleryLoaded">
+<!--<div class="loadingOverlay" *ngIf="!galleryLoaded">
     <div class="loadingInner">
         <h1>Loading Images</h1>
         <mat-spinner></mat-spinner>
     </div>
-</div>
+</div>-->

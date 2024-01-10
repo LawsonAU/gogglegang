@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { trigger, state, style, transition, animate, query, stagger } from "@angular/animations";
 import { memberData } from './members.data';
 import { MatTab } from '@angular/material/tabs';
@@ -44,8 +44,9 @@ import { MatTab } from '@angular/material/tabs';
     ],
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
     @ViewChildren(MatTab) tabs: QueryList<MatTab>;
+    @ViewChild('myVideo', { static: true }) myVideo: ElementRef;
     members: any = memberData.members;
 
     uniqueWeapons: any = [];
@@ -59,10 +60,36 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.initFilter();
         this.filteredMembers = this.members;
+        this.changeVideoSource('../../assets/videos/gg-background-vid2.webm');
+    }
+
+    ngAfterViewInit(): void {
+        this.myVideo.nativeElement.addEventListener('loadedmetadata', () => {
+            console.log('Video is loaded');
+            // You can check if the video is playing here, and load/play if needed
+            if (this.myVideo.nativeElement.paused) {
+                this.loadAndPlayVideo();
+            }
+        });
+
+        this.myVideo.nativeElement.addEventListener('play', () => {
+            console.log('Video is playing');
+        });
     }
 
     showSearchBar() {
         this.showHideSearch = !this.showHideSearch;
+    }
+
+    loadAndPlayVideo() {
+        this.myVideo.nativeElement.load();
+        this.myVideo.nativeElement.play();
+    }
+
+    changeVideoSource(newSource: string) {
+        this.myVideo.nativeElement.src = newSource;
+        this.myVideo.nativeElement.load(); // Reloads the video element
+        this.myVideo.nativeElement.play();
     }
 
     initFilter() {
@@ -76,8 +103,6 @@ export class HomeComponent implements OnInit {
                 }
             });
         });
-
-        console.log(this.uniqueWeapons);
     }
 
     updateFilter(weapon: string): void {

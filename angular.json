@@ -32,7 +32,9 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/smooth-scroll/dist/smooth-scroll.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -98,7 +100,9 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/smooth-scroll/dist/smooth-scroll.js"
+                        ]
                     }
                 }
             }

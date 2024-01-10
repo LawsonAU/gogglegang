@@ -66,17 +66,17 @@ body {
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif!important;
     color: var(--primary-text-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif!important;
 }
 
-span {
-    font-family: 'Poppins', sans-serif;
+span, p {
+    font-family: 'Poppins', sans-serif!important;
 }
 
 .displayContainer {
@@ -186,6 +186,7 @@ span {
     max-width: 450px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
+    padding: 0 15px;
 }
 
 .primaryBtn:hover {

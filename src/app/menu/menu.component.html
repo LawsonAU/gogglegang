@@ -23,6 +23,10 @@
         </div>
 
         <div class="menuItems">
+            <div class="menuBtn" (click)="goToDiscord()" style="background-color: #5865f2" matTooltip="Goggle Gang AI Discord">
+                <img class="menuBtnImg" src="../../assets/images/discord-icon-wht.webp">
+            </div>
+
             <div class="menuBtn" routerLink="/login" *ngIf="!isAuthenticated">
                 <span>
                     Login
