@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GalleryRoutingModule } from './gallery-routing.module';
 import { GalleryComponent } from './gallery.component';
 import { SharedModule } from '../shared/shared.module';
-import { NgxMasonryModule } from 'ngx-masonry';
-import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery';
-import { MasonryGalleryModule } from 'ngx-masonry-gallery';
 import { FormsModule } from '@angular/forms';
+import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 
 @NgModule({
     declarations: [
@@ -17,15 +15,13 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         GalleryRoutingModule,
         SharedModule,
-        NgxMasonryModule,
+        FormsModule,
         PhotoGalleryModule.forRoot({
             defaultOptions: {
-                arrowEl: true,
-                indexIndicatorSep: '-'
+              arrowEl: true,
+              indexIndicatorSep: '-'
             }
-        }),
-        MasonryGalleryModule,
-        FormsModule
+        })
     ]
 })
 

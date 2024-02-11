@@ -1,0 +1,48 @@
+.optionForm {
+    width: 100%;
+    display: flex;
+    padding-bottom: 30px;
+    align-items: center;
+    gap: 10px;
+}
+
+.optionField {
+    flex: 1;
+}
+
+.addNewOptionBtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--primary-shadow-universal);
+    padding: 10px 5px;
+    transition: all ease 0.2s;
+}
+
+.OptionBtnTop {
+    border-radius: 4px 4px 0 0;
+}
+
+.OptionBtnBtm {
+    border-radius: 0 0 4px 4px;
+}
+
+.OptionFullBtm {
+    border-radius: 4px;
+}
+
+.addNewOptionBtn:hover {
+    transition: all ease 0.2s;
+    background-color: white;
+    color: var(--primary-color);
+}
+
+::ng-deep {
+    .mat-expansion-panel-header-description {
+        justify-content: space-between;
+        align-items: center;
+    }
+}

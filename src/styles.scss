@@ -1,55 +1,38 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+// Angular Material
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @use "angular-material-css-vars" as mat-css-vars;
-
 @use "@material/image-list/mdc-image-list";
 
-@include mat-css-vars.init-material-css-vars();
-
+// Imports
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@100;300;400;500;600;700&display=swap');
 
+// Include the common styles for Angular Material.
+@include mat.core();
+
+// Include Angular Material CSS Vars
 @include mat-css-vars.init-material-css-vars();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$new-world-primary: mat.define-palette(mat.$indigo-palette);
-$new-world-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// Define common palettes
+$common-primary: mat.define-palette(mat.$indigo-palette);
+$common-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$common-warn: mat.define-palette(mat.$red-palette);
 
-// The warn palette is optional (defaults to red).
-$new-world-warn: mat.define-palette(mat.$red-palette);
+// Define common theme
+$common-theme: mat.define-light-theme((color: (primary: $common-primary, accent: $common-accent, warn: $common-warn)));
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$new-world-theme: mat.define-light-theme((
-    color: (
-        primary: $new-world-primary,
-        accent: $new-world-accent,
-        warn: $new-world-warn,
-    )
-));
+// Apply common theme to specific themes
+$gg-fe-2024-theme: $common-theme;
+$new-world-theme: $common-theme;
 
-$dark-theme: mat.define-dark-theme((
- color: (
-   primary: mat.define-palette(mat.$pink-palette),
-   accent: mat.define-palette(mat.$blue-grey-palette),
- ),
-  // Only include `typography` and `density` in the default dark theme.
-  typography: mat.define-typography-config(),
-  density: 0,
-));
+// Define dark theme
+$dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$pink-palette), accent: mat.define-palette(mat.$blue-grey-palette))));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Include theme styles for core and each component
+@include mat.all-component-themes($gg-fe-2024-theme);
 @include mat.all-component-themes($new-world-theme);
+@include mat.all-component-themes($dark-theme);
 
+// Custom Font
 @font-face {
     font-family: 'BlackPearl';
     src: url('../src/assets/fonts/BlackPearl.woff2') format('woff2'),
@@ -59,24 +42,26 @@ $dark-theme: mat.define-dark-theme((
     font-display: swap;
 }
 
+// Body Styles
 html,
 body {
     height: 100%;
-}
-
-body {
     margin: 0;
-    font-family: 'Poppins', sans-serif!important;
+    font-family: 'Poppins', sans-serif;
     color: var(--primary-text-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+// Heading and Paragraph Styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p {
     margin: 0;
-    font-family: 'Poppins', sans-serif!important;
-}
-
-span, p {
-    font-family: 'Poppins', sans-serif!important;
+    font-family: 'Poppins', sans-serif;
 }
 
 .displayContainer {
@@ -194,4 +179,43 @@ span, p {
     transition: all ease 0.2s;
     background-color: var(--primary-color);
     color: white;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.custom-success-snackbar {
+    .mdc-snackbar__surface {
+        background-color: #22bb33 !important;
+        color: white;
+    }
+}
+
+.custom-warning-snackbar {
+    .mdc-snackbar__surface {
+        background-color: #f0ad4e !important;
+        color: #202020;
+    }
+}
+
+.custom-error-snackbar {
+    .mdc-snackbar__surface {
+        background-color: #bb2124 !important;
+        color: white;
+    }
+}
+
+.full-screen-dialog {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }

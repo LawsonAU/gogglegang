@@ -1,0 +1,48 @@
+<form class="choiceForm" [formGroup]="choiceForm" (ngSubmit)="onSubmit()">
+    <div class="choiceFormFlex">
+        <mat-form-field class="choiceFormField">
+            <mat-label>Choice Name</mat-label>
+            <input matInput id="imageName" formControlName="imageName" (change)="onFieldChange()">
+        </mat-form-field>
+
+        <mat-form-field class="choiceFormField">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" formControlName="description" (change)="onFieldChange()"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="choiceFormField">
+            <mat-label>Tags</mat-label>
+            <input matInput id="tags" formControlName="tags" (change)="onFieldChange()">
+        </mat-form-field>
+    </div>
+
+    <div class="choiceFormImage">
+        <div class="imageInputSel">
+            <mat-slide-toggle [(ngModel)]="uploadImage" [ngModelOptions]="{standalone: true}">Upload image</mat-slide-toggle>
+        </div>
+
+        <div class="choiceFormFlex" *ngIf="!uploadImage">
+            <mat-form-field class="choiceFormField">
+                <mat-label>Image URL (Optional)</mat-label>
+                <input matInput id="imageURL" formControlName="imageURL" [(ngModel)]="imageURL" />
+            </mat-form-field>
+        </div>
+
+        <div class="uploadImageCont" *ngIf="uploadImage">
+            <app-image-upload
+                [currentFiles]="imageArray"
+                [maxFiles]="1"
+                (filesAdded)="handleFilesAdded($event)"
+                (filesRemoved)="handleFilesRemoved($event)"
+                [disabled]="isUploading"
+            ></app-image-upload>
+
+            <div class="btnCont" *ngIf="imageArray.length === 1">
+                <button class="primaryBtn" [disabled]="isUploading" (click)="createImageObject()">
+                    Upload image to DB
+                    <mat-spinner *ngIf="isUploading" diameter="30"></mat-spinner>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -8,7 +8,8 @@ export const memberData = {
             "weapon": ["Bow", "Void Gauntlet", "Rapier"],
             "KSLevel": 2,
             "role": "Archer",
-            "roleImage": "../../assets/images/role-icons/archer.png"
+            "roleImage": "../../assets/images/role-icons/archer.png",
+            "sex": "female"
         },
         {
             "name": "Edubbay",
@@ -18,7 +19,8 @@ export const memberData = {
             "weapon": ["Blunderbuss", "Flail"],
             "KSLevel": 2,
             "role": "Gunner",
-            "roleImage": "../../assets/images/role-icons/Gunner.png"
+            "roleImage": "../../assets/images/role-icons/Gunner.png",
+            "sex": "female"
         },
         {
             "name": "Cxbby",
@@ -28,7 +30,8 @@ export const memberData = {
             "weapon": ["Life Staff", "Rapier"],
             "KSLevel": 3,
             "role": "Healer",
-            "roleImage": "../../assets/images/role-icons/healer.png"
+            "roleImage": "../../assets/images/role-icons/healer.png",
+            "sex": "female"
         },
         {
             "name": "FreezingTemps",
@@ -38,7 +41,8 @@ export const memberData = {
             "weapon": ["Great Axe", "Sword and Shield", "War Hammer"],
             "KSLevel": 2,
             "role": "Tank",
-            "roleImage": "../../assets/images/role-icons/tank.png"
+            "roleImage": "../../assets/images/role-icons/tank.png",
+            "sex": "male"
         },
         {
             "name": "Spooki",
@@ -48,7 +52,8 @@ export const memberData = {
             "weapon": ["Absolution (Power of Abs)", "Void Gauntlet", "Ice Gauntlet"],
             "KSLevel": 1,
             "role": "Ab Wizard",
-            "roleImage": "../../assets/images/role-icons/ab-wizard.png"
+            "roleImage": "../../assets/images/role-icons/ab-wizard.png",
+            "sex": "male"
         },
         {
             "name": "Sedana",
@@ -58,7 +63,8 @@ export const memberData = {
             "weapon": ["Sword and Shield", "Spear"],
             "KSLevel": 3,
             "role": "Kill Thief",
-            "roleImage": "../../assets/images/role-icons/kill-thief.png"
+            "roleImage": "../../assets/images/role-icons/kill-thief.png",
+            "sex": "male"
         },
         {
             "name": "Kesther",
@@ -68,7 +74,8 @@ export const memberData = {
             "weapon": ["Fire Staff", "Blunderbuss"],
             "KSLevel": 3,
             "role": "Magician",
-            "roleImage": "../../assets/images/role-icons/magician.png"
+            "roleImage": "../../assets/images/role-icons/magician.png",
+            "sex": "male"
         },
         {
             "name": "Box",
@@ -78,7 +85,8 @@ export const memberData = {
             "weapon": ["Spear", "Sword and Shield"],
             "KSLevel": 2,
             "role": "Warrior",
-            "roleImage": "../../assets/images/role-icons/warrior.png"
+            "roleImage": "../../assets/images/role-icons/warrior.png",
+            "sex": "male"
         },
         {
             "name": "Yumemii",
@@ -86,9 +94,10 @@ export const memberData = {
             "description": " In the healing footsteps of her mentor Cxbby, Yumemii joins the Goggle Gang, guided into the legendary fellowship by the whimsical pyromancer Kesther. Her mending abilities and compassionate heart add a revitalizing touch to the group, bringing a fresh and earnest perspective to the legendary fellowship. As Aeternum's challenges unfold, Yumemii's healing prowess becomes an invaluable asset, stitching both wounds and camaraderie within the esteemed ranks of the Goggle Gang.",
             "image": "../../assets/images/goggle-gang-base/Yumemii-base.webp",
             "weapon": ["Life Staff", "Rapier"],
-            "KSLevel": 1,
+            "KSLevel": 2,
             "role": "Healer",
-            "roleImage": "../../assets/images/role-icons/healer.png"
+            "roleImage": "../../assets/images/role-icons/healer.png",
+            "sex": "female"
         }
     ]
 };

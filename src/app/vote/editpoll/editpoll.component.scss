@@ -1,0 +1,243 @@
+.pollWidth {
+    max-width: 1425px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 90px;
+    padding-top: 88px;
+}
+
+.pageInner {
+    padding-top: 60px;
+    padding-bottom: 120px;
+}
+
+.centerTxt {
+    display: flex;
+    height: calc(100vh - 150px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+
+    span {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loading-container mat-spinner {
+    margin-bottom: 10px;
+}
+
+.pollCreateFlex {
+    display: flex;
+    gap: 60px;
+}
+
+.pollCol {
+    flex: 2;
+}
+
+.pollColSml {
+    flex: 1;
+}
+
+.flexFormCont {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.pollDetailsCont {
+    padding-bottom: 30px;
+}
+
+.addNewOptionBtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--primary-shadow-small);
+    padding: 10px 5px;
+    transition: all ease 0.2s;
+}
+
+.OptionBtnTop {
+    border-radius: 4px 4px 0 0;
+}
+
+.OptionBtnBtm {
+    border-radius: 0 0 4px 4px;
+}
+
+.OptionFullBtm {
+    border-radius: 4px;
+}
+
+.addNewOptionBtn:hover {
+    transition: all ease 0.2s;
+    background-color: white;
+    color: var(--primary-color);
+    box-shadow: var(--primary-shadow-large);
+}
+
+.pollPreviewCont {
+    padding: 30px;
+    background-color: var(--primary-card-background);
+    box-shadow: var(--primary-shadow-small);
+    border-radius: 4px;
+}
+
+.pollSecHeader {
+    padding-bottom: 15px;
+
+    h1 {
+        margin-bottom: 0;
+    }
+}
+
+.prevMainDet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .prevPollName {
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+}
+
+::ng-deep {
+    .mat-expansion-panel-header-description {
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.deleteBtn {
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.deleteBtn:hover {
+    opacity: 0.8;
+    transition: all ease 0.2s;
+}
+
+.pollSecHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linkBtn {
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.linkBtn:hover {
+    opacity: 0.8;
+    transition: all ease 0.2s;
+}
+
+.choicesFlex {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.choicesCont {
+    width: calc(50% - 5px);
+    overflow: hidden;
+    border-radius: 4px;
+
+    .choiceImg {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.choiceDetailCont {
+    h4 {
+        margin-bottom: 0;
+    }
+
+    span {
+        display: block;
+        padding: 5px 0;
+    }
+
+    .choiceDesc {
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    .choiceTags {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    .choiceId {
+        font-size: 10px;
+        line-height: 1.3;
+    }
+}
+
+.createBarFixed {
+    position: fixed;
+    padding: 10px 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-card-background);
+    box-shadow: var(--primary-shadow-universal);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.primaryBtn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.choiceDetailCont {
+    padding: 15px;
+    background-color: var(--primary-background);
+    box-shadow: var(--primary-shadow-universal);
+}
+
+.fullRadius {
+    border-radius: 4px;
+}
+
+.halfRadius {
+    border-radius: 0 0 4px 4px;
+}
+
+.choiceImgCont {
+    overflow: hidden;
+    height: 300px;
+}
+
+.optionCont {
+    padding-bottom: 15px;
+    padding-top: 15px;
+
+    .optionHeader {
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 500;
+    }
+}

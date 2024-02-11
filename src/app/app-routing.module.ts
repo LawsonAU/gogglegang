@@ -13,10 +13,10 @@ const routes: Routes = [
             //{ path: '', redirectTo: environment.homeRoute, pathMatch: "full" },
             { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-            { path: 'calculator', loadChildren: () => import('./calculator/calculator.module').then(m => m.CalculatorModule) },
             { path: 'gallery', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
             { path: 'lore', loadChildren: () => import('./lore/lore.module').then(m => m.LoreModule) },
-            { path: 'art', loadChildren: () => import('./art/art.module').then(m => m.ArtModule) }
+            { path: 'art', loadChildren: () => import('./art/art.module').then(m => m.ArtModule) },
+            { path: 'vote', loadChildren: () => import('./vote/vote.module').then(m => m.VoteModule) }
         ]
     },
     { path: 'login', component: LoginComponent },

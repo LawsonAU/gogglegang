@@ -1,0 +1,63 @@
+<div class="pageWidth">
+    <div class="pageInner">
+        <!-- Loading Spinner and Text -->
+        <div class="loading-container" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+            <p>Loading Polls...</p>
+        </div>
+
+        <ng-container *ngIf="!isLoading">
+            <div class="pollGallery">
+                <h2>Active Polls</h2>
+                <div class="galFlex" *ngIf="activePolls.length > 0">
+                    <div *ngFor="let poll of activePolls" class="poll" (click)="navigateToVote(poll.id)">
+                        <!-- Gallery Display Logic -->
+                        <div class="pollImg">
+                            <!-- Display Images and Other Information -->
+                            <img [src]="poll.pollOptions[poll.randIndex]?.optionChoices[0]?.imageURL"
+                                alt="{{ poll.pollOptions[poll.randIndex]?.optionChoices[0].optionName }}">
+                            <!-- Add more display logic as needed -->
+                        </div>
+                        <!-- Title Card Display Logic -->
+                        <div class="pollDetails">
+                            <h3>{{ poll.pollName }}</h3>
+                            <p>Created: {{ poll.createDate | date }}<br>
+                                Expired: {{ poll.expires | date }}</p>
+                            <!-- Add more display logic as needed -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="galFlex" *ngIf="activePolls.length === 0">
+                    <h3>No Active Polls check back soon</h3>
+                </div>
+            </div>
+
+            <div class="pollGallery">
+                <h2>Expired Polls</h2>
+                <div class="galFlex" *ngIf="expiredPolls.length > 0">
+                    <div *ngFor="let poll of expiredPolls" class="poll" (click)="navigateToVote(poll.id)">
+                        <!-- Gallery Display Logic -->
+                        <div class="pollImg">
+                            <!-- Display Images and Other Information -->
+                            <img [src]="poll.pollOptions[poll.randIndex]?.optionChoices[0]?.imageURL"
+                                alt="{{ poll.pollOptions[poll.randIndex]?.optionChoices[0].optionName }}">
+                            <!-- Add more display logic as needed -->
+                        </div>
+                        <!-- Title Card Display Logic -->
+                        <div class="pollDetails">
+                            <h3>{{ poll.pollName }}</h3>
+                            <p>Created: {{ poll.createDate | date }}<br>
+                                Expired: {{ poll.expires | date }}</p>
+                            <!-- Add more display logic as needed -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="galFlex" *ngIf="expiredPolls.length === 0">
+                    <h3>No Expired Polls check back soon</h3>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,168 @@
+<div class="pageWidth">
+    <div class="loading-container" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+        <p>Loading Polls...</p>
+    </div>
+
+    <ng-container *ngIf="!isLoading">
+        <div class="pageInner pollCreateFlex">
+            <div class="pollCol">
+                <div class="pollDetailsCont">
+                    <div class="pollSecHeader">
+                        <h1>Poll Details</h1>
+
+                        <span *ngIf="pollId">{{pollId}}</span>
+                    </div>
+
+                    <form class="pollFlexForm" [formGroup]="pollForm">
+                        <div class="flexFormCont">
+                            <mat-form-field>
+                                <mat-label>Poll Name</mat-label>
+                                <input matInput formControlName="pollName" (change)="onFormChange()">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Expires</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="expires" (change)="onFormChange()">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error *ngIf="pollForm.get('expires').hasError('required')">
+                                    Expires is required
+                                </mat-error>
+                                <mat-error *ngIf="pollForm.get('expires').hasError('dateInPast')">
+                                    Expires must be in the future
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="pollOptionsCont" *ngIf="!isLoading">
+                    <div class="pollSecHeader">
+                        <h1>Poll Options</h1>
+                    </div>
+
+                    <ng-container *ngIf="pollData?.pollOptions?.length === 0">
+                        <div class="addNewOptionRow">
+                            <div class="addNewOptionBtn OptionFullBtm" (click)="addOptions('after')">
+                                <mat-icon>add</mat-icon>
+                                <span>Add option</span>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="pollData?.pollOptions?.length > 0">
+                        <div class="addNewOptionRow">
+                            <div class="addNewOptionBtn OptionBtnTop" (click)="addOptions('before')">
+                                <mat-icon>add</mat-icon>
+                                <span>Add option</span>
+                            </div>
+                        </div>
+
+                        <mat-accordion>
+                            <ng-container *ngFor="let option of pollData.pollOptions; let i = index">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{option.optionName}}
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            Expand to edit
+                                            <mat-icon class="deleteBtn" matTooltip="Delete Option" (click)="removeOption(option, i)">delete</mat-icon>
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <app-poll-options [optionName]="option.optionName" [choices]="option.optionChoices" [index]="i"
+                                    (updatePollOption)="onOptionChange($event, option)"></app-poll-options>
+                                </mat-expansion-panel>
+                            </ng-container>
+                        </mat-accordion>
+
+                        <div class="addNewOptionRow">
+                            <div class="addNewOptionBtn OptionBtnBtm" (click)="addOptions('after')">
+                                <mat-icon>add</mat-icon>
+                                <span>Add option</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="pollCol">
+                <div class="pollSecHeader">
+                    <h1>Preview</h1>
+
+                    <div class="btnCont">
+                        <span class="linkBtn" (click)="updatePreview()">Update Preview</span>
+                    </div>
+                </div>
+
+                <div class="pollPreviewCont">
+                    <div class="prevMainDet">
+                        <span class="prevPollName">
+                            {{pollData?.pollName || "{Poll Title}"}}
+                        </span>
+
+                        <span class="prevPollExpire">
+                            Expires: {{pollData?.expires || nowDate | date}}
+                        </span>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-accordion [multi]="true">
+                        <ng-container *ngFor="let option of pollData.pollOptions; let i = index">
+                            <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{option.optionName}}
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <div class="choicesFlex">
+                                    <ng-container *ngFor="let choice of option.optionChoices; let c = index">
+                                            <div class="choicesCont">
+                                                <div class="choiceImgCont" *ngIf="choice.imageURL">
+                                                    <img class="choiceImg" [src]="choice.imageURL || missingImage">
+                                                </div>
+
+                                                <div class="choiceDetailCont" [ngClass]="{'fullRadius': !choice.id, 'halfRadius': choice.id}">
+                                                    <h4>{{choice.imageName}}</h4>
+                                                    <mat-divider></mat-divider>
+                                                    <span class="choiceDesc" *ngIf="choice.description">{{choice.description}}</span>
+                                                    <span class="choiceTags" *ngIf="choice.tags">{{choice.tags}}</span>
+                                                    <span class="choiceId" *ngIf="choice.id">{{choice.id}}</span>
+                                                </div>
+                                            </div>
+                                    </ng-container>
+                                </div>
+                            </mat-expansion-panel>
+                        </ng-container>
+                    </mat-accordion>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--<ng-container *ngIf="!pollId">
+        <div class="centerTxt">
+            <span>No Poll Selected</span>
+
+            <button class="primaryBtn" style="flex:none">
+                Back to all polls
+            </button>
+        </div>
+    </ng-container>-->
+</div>
+
+<div class="createBarFixed">
+    <button class="primaryBtn" (click)="createPoll()" *ngIf="!pollId" [disabled]="isSaving">
+        Create Poll
+        <mat-spinner *ngIf="isSaving" diameter="30"></mat-spinner>
+    </button>
+
+    <button class="primaryBtn" (click)="updatePoll()" *ngIf="pollId" [disabled]="isSaving">
+        Update Poll
+        <mat-spinner *ngIf="isSaving" diameter="30"></mat-spinner>
+    </button>
+</div>

@@ -1,135 +1,84 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../src/environments/environment.prod';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
-
 export class ApiInterfaceService {
 
-    baseUrl = environment.domain;
+    private baseUrl: string;
 
-    baseHeader: any; //header containing our api key
-    baseHeaderNoAccessKey: any; //header containing no api key
+    private baseHeaders: HttpHeaders = new HttpHeaders();
+    private baseHeadersNoAccessKey: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
-    constructor(
-        private http: HttpClient
-    ) {
-        this.baseHeader = new HttpHeaders();
-        this.baseHeaderNoAccessKey = new HttpHeaders();
+    constructor(private http: HttpClient) {
+        this.baseUrl = environment.domain;
     }
 
-    updateBaseUrl(base: boolean) {
-        if (base) {
-            this.baseUrl  = environment.domain;
-        } else {
-            this.baseUrl  = environment.marketDomain;
-        }
+    private updateBaseUrl(base: boolean): void {
+        this.baseUrl = base ? environment.domain : environment.marketDomain;
     }
 
-    updateAuthHeader(params?: any) {
-        let auth = localStorage.getItem("auth");
+    private updateAuthHeaders(params?: any): void {
+        const auth = localStorage.getItem("auth");
         if (auth) {
-            let parsedAuth = JSON.parse(auth);
-            this.baseHeader = this.baseHeader.set('Authorization', 'Bearer ' + parsedAuth.token);
+            const parsedAuth = JSON.parse(auth);
+            this.baseHeaders = this.baseHeaders.set('Authorization', 'Bearer ' + parsedAuth.token);
 
             if (params && Object.keys(params).length > 0) {
-                for (let key in params) {
-                    this.baseHeader = this.baseHeader.set(key, params[key]);
+                for (const key in params) {
+                    this.baseHeaders = this.baseHeaders.set(key, params[key]);
                 }
             }
         }
     }
 
-    updateAuthHeaderFreeAccess() {
-        let auth = localStorage.getItem("auth");
-        if (auth) {
-            let parsedAuth = JSON.parse(auth);
-            this.baseHeaderNoAccessKey = this.baseHeaderNoAccessKey.set('Authorization', 'Bearer ' + parsedAuth.token);
-        }
+    private handleError(error: any): Observable<never> {
+        console.error('An error occurred:', error);
+        return throwError(error);
     }
 
-    getMarket(path: any, params?: any) {
-        this.updateAuthHeader(params);
-        return this.http.get(environment.marketDomain + path, { params: params, headers: this.baseHeader });
+    private prepareOptions(params?: any, responseType?: 'json' | 'text'): { params?: HttpParams, headers?: HttpHeaders, responseType?: 'json' } {
+        const options: any = { headers: this.baseHeaders };
+        if (params) options.params = new HttpParams({ fromObject: params });
+        options.responseType = responseType === 'text' ? 'text' : 'json';
+        return options;
     }
 
-    get(path: any, params?: any) {
-        this.updateAuthHeader(params);
-        return this.http.get(this.baseUrl + path, { params: params, headers: this.baseHeader });
+    // Public Methods
+
+    public setBaseUrl(base: boolean): void {
+        this.updateBaseUrl(base);
     }
 
-    getResText(path: any, params?: any) {
-        this.updateAuthHeader(params);
-        return this.http.get(this.baseUrl + path, { params: params, headers: this.baseHeader, responseType: 'text' });
+    public setAuthHeaders(params?: any): void {
+        this.updateAuthHeaders(params);
     }
 
-    getNoKey(path: any, params?: any) {
-        return this.http.get(this.baseUrl + path, { params: params, headers: this.baseHeaderNoAccessKey });
+    public get(path: string, params?: any): Observable<any> {
+        this.updateAuthHeaders(params);
+        return this.http.get(`${this.baseUrl}${path}`, this.prepareOptions(params))
+            .pipe(catchError(this.handleError));
     }
 
-    getResTextNoKey(path: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
-        return this.http.get(this.baseUrl + path, { params: params, headers: this.baseHeader, responseType: 'text' });
+    public post(path: string, body?: any, params?: any): Observable<any> {
+        this.updateAuthHeaders();
+        return this.http.post(`${this.baseUrl}${path}`, body, this.prepareOptions(params))
+            .pipe(catchError(this.handleError));
     }
 
-    post(path: any, body?: any, params?: any) {
-        this.updateAuthHeader();
-        return this.http.post(this.baseUrl + path, body, { params: params, headers: this.baseHeader });
+    public put(path: string, body?: any, params?: any): Observable<any> {
+        this.updateAuthHeaders();
+        return this.http.put(`${this.baseUrl}${path}`, body, this.prepareOptions(params))
+            .pipe(catchError(this.handleError));
     }
 
-    postResText(path: any, body?: any, params?: any) {
-        this.updateAuthHeader();
-        return this.http.post(this.baseUrl + path, body, { params: params, headers: this.baseHeader, responseType: 'text' });
-    }
-
-    postNoKey(path: any, body?: any, params?: any) {
-        return this.http.post(this.baseUrl + path, body, { params: params, headers: this.baseHeader });
-    }
-
-    postResTextNoKey(path: any, body?: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
-        return this.http.post(this.baseUrl + path, body, { params: params, headers: this.baseHeader, responseType: 'text' });
-    }
-
-    put(path: any, body?: any, params?: any) {
-        this.updateAuthHeader();
-        return this.http.put(this.baseUrl + path, body, { params: params, headers: this.baseHeader });
-    }
-
-    putResText(path: any, body?: any, params?: any) {
-        this.updateAuthHeader();
-        return this.http.put(this.baseUrl + path, body, { params: params, headers: this.baseHeader, responseType: 'text' });
-    }
-
-    putNoKey(path: any, body?: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
-        return this.http.put(this.baseUrl + path, body, { params: params, headers: this.baseHeader });
-    }
-
-    putResTextNoKey(path: any, body?: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
-        return this.http.put(this.baseUrl + path, body, { params: params, headers: this.baseHeader, responseType: 'text' });
-    }
-
-    delete(path: any, params?: any) {
-        this.updateAuthHeader();
-        return this.http.delete(this.baseUrl + path, { params: params, headers: this.baseHeader });
-    }
-
-    deleteResText(path: any, params?: any) {
-        this.updateAuthHeader();
-        return this.http.delete(this.baseUrl + path, { params: params, headers: this.baseHeader, responseType: 'text' });
-    }
-
-    deleteNoKey(path: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
-        return this.http.delete(this.baseUrl + path, { params: params, headers: this.baseHeader });
-    }
-
-    deleteResTextNoKey(path: any, params?: any) {
-        this.updateAuthHeaderFreeAccess();
-        return this.http.delete(this.baseUrl + path, { params: params, headers: this.baseHeader, responseType: 'text' });
+    public delete(path: string, params?: any): Observable<any> {
+        this.updateAuthHeaders();
+        return this.http.delete(`${this.baseUrl}${path}`, this.prepareOptions(params))
+            .pipe(catchError(this.handleError));
     }
 }

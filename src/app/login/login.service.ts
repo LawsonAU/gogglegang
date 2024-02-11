@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ApiInterfaceService } from '../api-interface.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -16,14 +15,7 @@ export class LoginService {
     ) { }
 
     async login(email: string, password: string) {
-        try {
-            let res: any = await this.api.postNoKey('login', { username: email, password: password }).toPromise();
-            return res;
-        } catch (e) {
-            console.log(e);
-            const error = e.error;
-            throw new Error(error);
-        }
+
     }
 
     logout(): void {

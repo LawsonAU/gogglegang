@@ -1,0 +1,142 @@
+<div class="pageWidth">
+    <div class="loading-container" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+        <p>Loading Polls...</p>
+    </div>
+
+    <ng-container *ngIf="!isLoading && (expired || showLeaders)">
+        <div class="pageInner" id="winners">
+            <div class="prevMainDet">
+                <span class="prevPollName">{{expired ? 'Winners' : 'Current Leaders'}}</span>
+            </div>
+            <div class="winImageFlex">
+                <ng-container *ngFor="let winner of winnerData">
+                    <div class="winImage" *ngIf="!winner?.draw">
+
+                        <div class="votedIconCont">
+                            <span class="voteCount">{{winner.choices[0].voteCount}}</span>
+                            <mat-icon class="votedIcon" *ngIf="winner.choices[0]?.voted" matTooltip="This is your pick">task_alt</mat-icon>
+                        </div>
+
+                        <div class="choiceImgCont" *ngIf="winner.choices[0].imageURL" (click)="expandImage(winner.choices[0].imageURL)">
+                            <img class="choiceImg" [src]="winner.choices[0].imageURL || missingImage">
+                        </div>
+
+                        <div class="choiceDetailCont" [ngClass]="{'fullRadius': !winner.choices[0].id, 'halfRadius': winner.choices[0].id}">
+                            <h4>{{winner.choices[0].imageName}}</h4>
+                            <mat-divider></mat-divider>
+                            <span class="choiceDesc" *ngIf="winner.choices[0].description">{{winner.choices[0].description}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="winImage" *ngIf="winner?.draw">
+                        <div class="selectDrawItem">
+                            <mat-button-toggle-group #choiceDrawSel="matButtonToggleGroup" [ngModel]="0">
+                                <mat-button-toggle [value]="i" aria-label="Selected Draw Choice" *ngFor="let choice of winner.choices, let i = index">
+                                    {{i+1}}
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+
+                        <ng-container *ngFor="let choice of winner.choices, let i = index">
+                            <div *ngIf="choiceDrawSel.value === i">
+                                <div class="votedIconCont">
+                                    <span class="voteCount">{{choice.voteCount}}</span>
+                                    <span class="voteCount">Draw</span>
+                                    <mat-icon class="votedIcon" *ngIf="choice?.voted" matTooltip="This is your pick">task_alt</mat-icon>
+                                </div>
+
+                                <div class="choiceImgCont" *ngIf="choice.imageURL" (click)="expandImage(choice.imageURL)">
+                                    <img class="choiceImg" [src]="choice.imageURL || missingImage">
+                                </div>
+
+                                <div class="choiceDetailCont" [ngClass]="{'fullRadius': !choice.id, 'halfRadius': choice.id}">
+                                    <h4>{{choice.imageName}}</h4>
+                                    <mat-divider></mat-divider>
+                                    <span class="choiceDesc" *ngIf="choice.description">{{choice.description}}</span>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isLoading && !expired">
+        <div class="pageInner">
+            <div class="prevMainDet">
+                <span class="prevPollName">
+                    Vote on: {{pollData?.pollName || "{Poll Title}"}}
+                </span>
+
+                <span class="prevPollExpire">
+                    {{expired ? 'Expired' : 'Expires'}}: {{pollData?.expires || nowDate | date}}
+                </span>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <mat-accordion [multi]="true">
+                <ng-container *ngFor="let option of pollData.pollOptions; let i = index">
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{option.optionName}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <div class="choicesFlex">
+                            <ng-container *ngFor="let choice of option.optionChoices; let c = index">
+                                <div class="choicesCont voteCont">
+                                    <div class="imgHelpText" *ngIf="(i === 0 && c === 0 && localVoteData?.length === 0) || (i === 0 && c === 0 && testing)">
+                                        <mat-icon>help</mat-icon>
+                                        <span>Click to show the full image!</span>
+                                    </div>
+
+                                    <div class="loading-vote" *ngIf="choice?.voteLoad || option?.voteLoad">
+                                        <mat-spinner></mat-spinner>
+                                    </div>
+
+                                    <mat-icon class="voteBtn" (click)="voteForMe(option, choice, true)" *ngIf="!choice?.voted" matTooltip="Vote for this">
+                                        check_circle
+                                    </mat-icon>
+
+                                    <mat-icon class="voteBtn" style="background-color: #bb2124;" (click)="removeVote(option, choice)" *ngIf="choice?.voted" matTooltip="Remove your vote">
+                                        cancel
+                                    </mat-icon>
+
+                                    <div class="votedIconCont">
+                                        <span class="voteCount" *ngIf="option?.voted">{{choice.voteCount}}</span>
+                                        <mat-icon class="votedIcon" *ngIf="choice?.voted" matTooltip="This is your pick">task_alt</mat-icon>
+                                    </div>
+
+                                    <div class="choiceImgCont" *ngIf="choice.imageURL" (click)="expandImage(choice.imageURL)">
+                                        <img class="choiceImg" [src]="choice.imageURL || missingImage" matTooltip="Show full Image">
+                                    </div>
+
+                                    <div class="choiceDetailCont" [ngClass]="{'fullRadius': !choice.id, 'halfRadius': choice.id}">
+                                        <h4>{{choice.imageName}}</h4>
+                                        <mat-divider></mat-divider>
+                                        <span class="choiceDesc" *ngIf="choice.description">{{choice.description}}</span>
+                                        <span class="choiceTags" *ngIf="choice.tags">{{choice.tags}}</span>
+                                        <span class="choiceId" *ngIf="choice.id">{{choice.id}}</span>
+
+                                        <button class="primaryBtn" (click)="voteForMe(option, choice, true)" *ngIf="!choice?.voted">Vote</button>
+                                        <button class="primaryBtn" style="background-color: #bb2124; color: white" (click)="removeVote(option, choice)" *ngIf="choice?.voted">Unvote</button>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </mat-expansion-panel>
+                </ng-container>
+            </mat-accordion>
+        </div>
+    </ng-container>
+</div>
+
+<div class="goToWinner" *ngIf="localVoteData.length == pollData?.pollOptions.length">
+    <button (click)="scrollToElement('winners')" class="primaryBtn">See winners</button>
+</div>

@@ -1,0 +1,273 @@
+::ng-deep {
+    .mat-accordion {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: baseline;
+    }
+
+    .mat-expansion-panel {
+        width: calc(50% - 15px);
+    }
+
+    @media (max-width: 767px) {
+        .mat-expansion-panel {
+            width: 100%;
+        }
+    }
+}
+
+
+.pageInner {
+    padding-top: 30px;
+}
+
+.pollPreviewCont {
+    padding: 30px;
+    background-color: var(--primary-card-background);
+    box-shadow: var(--primary-shadow-small);
+    border-radius: 4px;
+}
+
+.pollSecHeader {
+    padding-bottom: 15px;
+
+    h1 {
+        margin-bottom: 0;
+    }
+}
+
+.prevMainDet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+
+    .prevPollName {
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+}
+
+.choicesFlex {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.choicesCont {
+    width: calc(50% - 5px);
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: var(--primary-background);
+}
+
+.choiceImgCont {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.choiceImg {
+    width: 100%;
+    object-fit: cover;
+    transition: all ease 0.2s;
+}
+
+
+@media (max-width: 767px) {
+    .choicesCont {
+        width: 100%
+    }
+}
+
+.choiceDetailCont {
+    padding: 10px;
+    transition: all ease 0.2s;
+
+    h4 {
+        margin-bottom: 0;
+    }
+
+    span {
+        display: block;
+        padding: 5px 0;
+    }
+
+    .choiceDesc {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    .choiceTags {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    .choiceId {
+        font-size: 8px;
+        line-height: 1.3;
+    }
+}
+
+.pollCreateFlex {
+    display: flex;
+    gap: 60px;
+}
+
+.pollCol {
+    flex: 2;
+}
+
+.pollColSml {
+    flex: 1;
+}
+
+.voteCont {
+    transition: all ease 0.2s;
+    position: relative;
+}
+
+.voteCont:hover {
+    box-shadow: var(--primary-shadow-universal);
+    transition: all ease 0.2s;
+
+    img {
+        transform: scale(1.05);
+        transition: all ease 0.2s;
+        cursor: pointer;
+    }
+
+    .choiceDetailCont {
+        background-color: var(--primary-color);
+        transition: all ease 0.2s;
+    }
+
+    .voteBtn {
+        transition: all ease 0.2s;
+        opacity: 1;
+    }
+}
+
+.voteBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    background-color: var(--primary-color);
+    z-index: 1;
+    border-radius: 4px;
+    transition: all ease 0.2s;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.voteBtn:hover {
+    transition: all ease 0.2s;
+    opacity: 0.8;
+}
+
+.votedIconCont {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.votedIcon {
+    color: #22bb33;
+}
+
+.voteCount {
+    background-color: var(--primary-color);
+    padding: 5px;
+    min-width: 20px;
+    border-radius: 4px;
+    user-select: none;
+    text-align: center;
+
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loading-container mat-spinner {
+    margin-bottom: 10px;
+}
+
+.loading-vote {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    backdrop-filter: blur(8px); /* Adjust the blur value as needed */
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust the color and opacity as needed */
+}
+
+.winImageFlex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .winImage {
+        width: calc(25% - 11.3px);
+        position: relative;
+    }
+
+    :hover {
+        img {
+            transform: scale(1.05);
+            transition: all ease 0.2s;
+            cursor: pointer;
+        }
+
+        .choiceDetailCont {
+            background-color: var(--primary-color);
+            transition: all ease 0.2s;
+        }
+    }
+}
+
+.goToWinner {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2;
+}
+
+.selectDrawItem {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.imgHelpText {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    user-select: none;
+
+    mat-icon {
+        color: #22bb33;
+    }
+}

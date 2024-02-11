@@ -1,0 +1,57 @@
+<form class="optionForm" [formGroup]="optionForm">
+    <mat-form-field class="optionField" *ngIf="!useMemberName">
+        <mat-label>Option Name</mat-label>
+        <input matInput formControlName="optionName" (change)="onNameChange()">
+    </mat-form-field>
+
+    <mat-form-field class="optionField" *ngIf="useMemberName">
+        <mat-label>Member Name</mat-label>
+        <mat-select formControlName="memberName" (selectionChange)="onMemberNameSelect()">
+            <mat-option *ngFor="let member of memberNames" [value]="member">{{ member }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle [(ngModel)]="useMemberName" [ngModelOptions]="{standalone: true}">Use Name</mat-slide-toggle>
+</form>
+
+<ng-container *ngIf="choices?.length === 0">
+    <div class="addNewOptionRow">
+        <div class="addNewOptionBtn OptionFullBtm" (click)="addChoice()">
+            <mat-icon>add</mat-icon>
+            <span>Add Choice</span>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="choices?.length > 0">
+    <mat-accordion>
+        <ng-container *ngFor="let choice of choices; let i = index">
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{choice.imageName}}
+                    </mat-panel-title>
+
+                    <mat-panel-description>
+                        {{choice.description || '-'}}
+                        <div class="panelBtns">
+                            <mat-icon class="deleteBtn" matTooltip="Copy Choice" (click)="copyChoice(choice)">content_copy</mat-icon>
+                            <mat-icon class="deleteBtn" matTooltip="Delete Choice" (click)="removeChoice(choice, i)">delete</mat-icon>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <app-option-choices [imageName]="choice.imageName" [description]="choice.description" [id]="choice.id"
+                    [option]="i+1" [index]="i" [imageURL]="choice.imageURL" [tags]="choice.tags"
+                    (choiceSubmitted)="onChoiceChange($event, choice)"></app-option-choices>
+            </mat-expansion-panel>
+        </ng-container>
+    </mat-accordion>
+
+    <div class="addNewOptionRow">
+        <div class="addNewOptionBtn OptionBtnBtm" (click)="addChoice()">
+            <mat-icon>add</mat-icon>
+            <span>Add Choice</span>
+        </div>
+    </div>
+</ng-container>

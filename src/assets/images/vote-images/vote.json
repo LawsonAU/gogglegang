@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Welcoming farmers of Everfall",
+        "VoteCount": 0,
+        "url": "../../images/vote-images/shadres-everfall-duality.webp",
+        "id": 1
+    },
+    {
+        "name": "Brightwood Blood Mages",
+        "VoteCount": 0,
+        "url": "../../images/vote-images/Sedana-bloodmagic.webp",
+        "id": 2
+    },
+    {
+        "name": "Hextech",
+        "VoteCount": 0,
+        "url": "../../images/vote-images/Cxbby-hextech.webp",
+        "id": 3
+    },
+    {
+        "name": "Elysian Druidic Order",
+        "VoteCount": 0,
+        "url": "../../images/vote-images/spooki-elysian-wilds.webp",
+        "id": 4
+    },
+    {
+        "name": "Goggle Gang Host Club",
+        "VoteCount": 0,
+        "url": "../../images/vote-images/Yumemii-Hostess.webp",
+        "id": 5
+    }
+]

@@ -7,6 +7,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { AuthService } from '../auth.service';
 import { LoginService } from '../login/login.service';
+import { trigger, state, style, transition, animate } from "@angular/animations";
 
 export interface Item {
     tier?: number;
@@ -27,7 +28,17 @@ export interface Item {
 @Component({
     selector: 'app-menu',
     templateUrl: './menu.component.html',
-    styleUrls: ['./menu.component.scss']
+    styleUrls: ['./menu.component.scss'],
+    animations: [
+        trigger("showHideMobMenu", [
+            state("collapsed", style({ width: "0px", overflow: "hidden", opacity: 0 })),
+            state("expanded", style({ width: "*", opacity: 1 })),
+            transition(
+                "expanded <=> collapsed",
+                animate("350ms cubic-bezier(0.4, 0.0, 0.2, 1)")
+            ),
+        ])
+    ]
 })
 
 export class MenuComponent implements OnInit {
@@ -58,6 +69,8 @@ export class MenuComponent implements OnInit {
     options: Item[] = itemsDB;
     filteredOptions: Observable<Item[]>;
 
+    showMobMenu: boolean = false;
+
     menuItems = [
         {
             name: 'Members',
@@ -77,6 +90,11 @@ export class MenuComponent implements OnInit {
         {
             name: 'Lore',
             route: '/lore',
+            dropdown: false
+        },
+        {
+            name: 'Vote',
+            route: '/vote',
             dropdown: false
         }
     ]
@@ -218,20 +236,7 @@ export class MenuComponent implements OnInit {
         } else {
             this.router.navigate([item.route]);
         }
-    }
-
-    onSearchSubmit(event: Event) {
-        console.log(event, 'event');
-        console.log(this.myControl, 'this.myControl');
-        event.preventDefault(); // Prevent the default form submission behavior
-
-        // Get the selected option from the form control
-        const selectedOption = this.myControl.value as Item;
-
-        if (selectedOption) {
-            // Navigate to the 'calculator' route with the selected option's marketId
-            this.goToRoute({ route: 'calculator' }, selectedOption.marketId);
-        }
+        this.showMobMenu = false;
     }
 
     logout() {

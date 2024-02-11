@@ -1,0 +1,6 @@
+<!-- view-image.component.html -->
+<button mat-icon-button (click)="closeDialog()" class="close-button">
+    <mat-icon>close</mat-icon>
+</button>
+
+<img [src]="data.imageUrl" alt="Full-screen Image" class="full-screen-image" (click)="closeDialog()">
