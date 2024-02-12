@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this.initFilter();
         this.filteredMembers = this.members;
-        this.changeVideoSource('../../assets/videos/gg-background-vid2.webm');
+        this.changeVideoSource('../../assets/videos/titles-webBG-mb.webm');
     }
 
     ngAfterViewInit(): void {

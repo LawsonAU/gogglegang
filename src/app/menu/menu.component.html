@@ -5,9 +5,9 @@
 
     <div class="menuInner">
         <div class="mobileMenuBar">
-            <div class="logoCont flexLogo" style="margin-right: 10px;">
+            <!--<div class="logoCont flexLogo" style="margin-right: 10px;">
                 <img id="logo" class="logo" src="../../assets/images/NW Stacked Wht.png">
-            </div>
+            </div>-->
 
             <button class="menuOpen" mat-button (click)="showMobMenu = !showMobMenu">
                 <mat-icon>
@@ -17,9 +17,9 @@
         </div>
 
         <div class="menuItems">
-            <div class="logoCont flexLogo" style="margin-right: 10px;">
+            <!--<div class="logoCont flexLogo" style="margin-right: 10px;">
                 <img id="logo" class="logo" src="../../assets/images/NW Stacked Wht.png">
-            </div>
+            </div>-->
 
             <ng-container *ngFor="let item of menuItems">
                 <div class="menuItem"
@@ -36,9 +36,16 @@
         </div>
 
         <div class="menuItems">
+
             <div class="menuBtn" (click)="goToDiscord()" style="background-color: #5865f2"
                 matTooltip="Goggle Gang AI Discord">
                 <img class="menuBtnImg" src="../../assets/images/discord-icon-wht.webp">
+            </div>
+
+            <div class="menuBtn" style="background-color: #52bfdc;" (click)="goToDonate()">
+                <span>
+                    Donate
+                </span>
             </div>
 
             <div class="menuBtn" routerLink="/login" *ngIf="!isAuthenticated">
@@ -53,9 +60,9 @@
                 </span>
             </div>
 
-            <div class="logoCont flexLogo" style="margin-right: 10px;">
+            <!--<div class="logoCont flexLogo" style="margin-right: 10px;">
                 <img id="logo" class="logo" src="../../assets/images/syndicate.png">
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

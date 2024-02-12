@@ -247,5 +247,8 @@ export class MenuComponent implements OnInit {
         window.open('https://discord.gg/4rT9khvb7g', '_blank');
     }
 
+    goToDonate() {
+        window.open('https://www.paypal.com/donate/?business=QFF96E5DD6KWN&no_recurring=0&currency_code=AUD', '_blank');
+    }
 }
 
